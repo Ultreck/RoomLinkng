@@ -1,8 +1,13 @@
+import RenterHeader from '@/components/layout/RenterHeader'
+import SearchBar from '@/components/SearchBar'
 import React from 'react'
 
 const RenterPage = () => {
   return (
-    <div>RenterPage</div>
+    <div>
+      <RenterHeader/>
+      <SearchBar/>
+    </div>
   )
 }
 
