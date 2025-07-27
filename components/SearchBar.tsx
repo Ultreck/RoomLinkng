@@ -49,7 +49,7 @@ const SearchBar = () => {
             </div>
 
             {/* Available From Date */}
-            <div className="flex items-center space-x-2 px-8 border-r border-white bg-white rounded-full flex-1">
+            <div className="flex items-center  w-full space-x-2 px-8 border-r border-white bg-white rounded-full flex-1">
               <RangeCalender>
                 <Button className="flex text-gray-500 border-0 focus-visible:border-0 focus-visible:ring-0 outline-0 bg-transparent hover:bg-transparent font-normal">
                   <Calendar className="h-4 w-4 text-green-600 hover:text-green-700 flex-shrink-0" />

@@ -7,18 +7,19 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+import { DateRange } from "react-day-picker";
 const RangeCalender = ({ children }: { children: React.ReactNode }) => {
-  const [date, setDate] = useState<Date | undefined>(new Date(2025, 7, 28));
+  const [date, setDate] = useState<DateRange | undefined>(undefined);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>{children}</DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="w-full">
         <Calendar
-          mode="single"
-          defaultMonth={date}
+          mode="range"
+          defaultMonth={date?.from}
           numberOfMonths={2}
           selected={date}
+          disabled={{ before: new Date() }}
           onSelect={setDate}
           className="rounded-lg border shadow-sm"
         />
