@@ -14,9 +14,9 @@ const SearchBar = () => {
             <SlidersHorizontal className="h-4 w-4" />
           </Button>
 
-        <div className="text flex bg-gray-100 border border-gray-300 rounded-full shadow-lg px-5 justify-between py-2 space-x-6">
+        <div className="text flex bg-gray-100 border border-gray-300 rounded-full shadow-lg px-3 justify-between py-2 space-x-6">
           {/* Location Selector */}
-          <div className="flex items-center space-x-2 px-4 py-2 border-r border-white bg-white min-w-0 flex-1">
+          <div className="flex items-center space-x-2 px-4 py-2 border-r border-white bg-white rounded-full flex-1">
             <MapPin className="h-4 w-4 text-gray-400 flex-shrink-0" />
             <Select>
               <SelectTrigger className="border-none shadow-none p-0 h-auto focus:ring-0">
@@ -33,7 +33,7 @@ const SearchBar = () => {
           </div>
 
           {/* Available From Date */}
-          <div className="flex items-center space-x-2 px-4 py-2 border-r border-gray-200 min-w-0 flex-1">
+          <div className="flex items-center space-x-2 px-4 py-2 border-r border-white bg-white rounded-full flex-1">
             <Calendar className="h-4 w-4 text-gray-400 flex-shrink-0" />
             <Select>
               <SelectTrigger className="border-none shadow-none p-0 h-auto focus:ring-0">
@@ -50,7 +50,7 @@ const SearchBar = () => {
           </div>
 
           {/* Month Selector */}
-          <div className="flex items-center space-x-2 px-4 py-2 border-r border-gray-200 min-w-0 flex-1">
+          <div className="flex items-center space-x-2 px-4 py-2 border-r border-white bg-white rounded-full flex-1">
             <Calendar className="h-4 w-4 text-gray-400 flex-shrink-0" />
             <Select>
               <SelectTrigger className="border-none shadow-none p-0 h-auto focus:ring-0">

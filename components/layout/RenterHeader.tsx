@@ -6,7 +6,7 @@ import { Mail } from 'lucide-react';
 
 const RenterHeader = () => {
   return (
-    <header className="w-full bg-white px-6 py-2">
+    <header className="w-full bg-white px-6 py-1">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
