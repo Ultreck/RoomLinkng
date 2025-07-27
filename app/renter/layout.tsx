@@ -13,9 +13,6 @@ export default function RenterLayout({
         <SearchBar />
       </header>
       <div className="flex-1 p-4">{children}</div>
-      <footer className="bg-gray-800 text-white p-4 text-center">
-        © 2023 Renter Dashboard
-      </footer>
     </section>
   );
 }

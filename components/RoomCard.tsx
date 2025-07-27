@@ -40,7 +40,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
     >
       <div className="relative">
         {/* Room Image */}
-        <div className="relative rounded-[20px] h-[188.72px] w-[252px] overflow-hidden">
+        <div className="relative rounded-[20px] h-[195px] w-[272px] overflow-hidden">
           <Image
             src={img}
             alt={title}
@@ -73,15 +73,15 @@ const RoomCard: React.FC<RoomCardProps> = ({
           {/* Location */}
           {/* Rating */}
           <div className="flex items-center space-x-1">
-            <p className="text-sm text-gray-600">{location}</p>
+            <p className="text-xs text-gray-800">{location}</p>
             <Star className="h-3 w-3 text-yellow-400 fill-current" />
-            <span className="text-sm font-medium text-gray-900">{rating}</span>
+            <span className="text-xs font-medium text-gray-900">{rating}</span>
           </div>
 
           {/* Price */}
           <div className="text-right">
             <span className="text-lg font-bold text-gray-900">{price}</span>
-            <span className="text-sm text-gray-600">/room</span>
+            <span className="text-xs text-gray-600">/room</span>
           </div>
         </div>
       </div>

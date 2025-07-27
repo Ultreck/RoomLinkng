@@ -1,6 +1,4 @@
-import RenterHeader from "@/components/layout/RenterHeader";
 import RoomSection from "@/components/RoomSection";
-import SearchBar from "@/components/SearchBar";
 import Image from "next/image";
 import React from "react";
 import img from "../../assets/images/map.png";
@@ -67,14 +65,12 @@ const lagosRooms = [
 const RenterPage = () => {
   return (
     <div className="flex flex-col max-w-8xl mx-auto p-5 space-y-6">
-      {/* <RenterHeader />
-      <SearchBar /> */}
-      <div className="text flex w-full justify-between space-x-5">
-        <div className="text">
+      <div className="text flex justify-center w-full lg:justify-between space-x-5">
+        <div className="text mx-auto">
           <RoomSection title="Rooms in Ibadan" rooms={ibadanRooms} />
           <RoomSection title="Rooms in Lagos" rooms={lagosRooms} />
         </div>
-        <div className="text lg:w-[517px] lg:h-[623px]">
+        <div className="text hidden lg:block h-[600px] lg:w-[517px] lg:h-[623px]">
           <Image
             src={img}
             alt={"map"}
