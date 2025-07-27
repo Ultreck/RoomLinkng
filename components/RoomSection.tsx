@@ -19,9 +19,9 @@ interface RoomSectionProps {
 
 const RoomSection: React.FC<RoomSectionProps> = ({ title, rooms }) => {
   return (
-    <div className="mb-8">
+    <div className="mb-5 border">
       {/* Section Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-3">
         <h2 className="text-xl font-semibold text-gray-900 flex items-center">
           {title}
           <ChevronRight className="h-5 w-5 ml-1 text-gray-400" />

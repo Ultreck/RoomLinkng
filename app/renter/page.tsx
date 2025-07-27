@@ -66,22 +66,22 @@ const lagosRooms = [
 ];
 const RenterPage = () => {
   return (
-    <div>
-      <RenterHeader />
-      <SearchBar />
+    <div className="flex flex-col max-w-8xl mx-auto p-5 space-y-6">
+      {/* <RenterHeader />
+      <SearchBar /> */}
       <div className="text flex w-full justify-between space-x-5">
-        <div className="text w-2/3">
+        <div className="text">
           <RoomSection title="Rooms in Ibadan" rooms={ibadanRooms} />
           <RoomSection title="Rooms in Lagos" rooms={lagosRooms} />
         </div>
-        <div className="text h-screen">
+        <div className="text lg:w-[517px] lg:h-[623px]">
           <Image
             src={img}
             alt={"map"}
             // fill
-            width={500}
-            height={700}
-            className="group-hover:scale-105 transition-transform duration-300"
+            // width={500}
+            // height={700}
+            className="group-hover:scale-105 object-cover transition-transform duration-300"
           />
         </div>
       </div>

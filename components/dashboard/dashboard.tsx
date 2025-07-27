@@ -2,7 +2,7 @@
 
 export default function Dashboard() {
   return (
-    <div className="flex">
+    <div className="flex max-w-8xl">
         <main className="p-6">
           <h1 className="text-2xl font-semibold mb-4">Dashboard</h1>
           <p className="text-gray-600 mb-6">List your rooms and receive bookings with ease.</p>
