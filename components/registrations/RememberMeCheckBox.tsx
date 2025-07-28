@@ -1,27 +1,30 @@
-import React from 'react'
-import { Label } from '../ui/label'
-import { Checkbox } from '../ui/checkbox'
+import React from 'react';
+import { Label } from '../ui/label';
+import { Checkbox } from '../ui/checkbox';
+import { UseFormReturn } from 'react-hook-form';
 
 type RememberMeCheckBoxProps = {
-    id: string;
-}
-const RememberMeCheckBox = ({id}: RememberMeCheckBoxProps) => {
+  id: string;
+  label?: string;
+  form: UseFormReturn<any>;
+  name: string;
+};
+
+const RememberMeCheckBox = ({ id, form, name, label = 'Remember me' }: RememberMeCheckBoxProps) => {
+  const { register } = form;
+
   return (
     <div>
-         <Label className="">
+      <Label htmlFor={id} className="flex items-center gap-2">
         <Checkbox
           id={id}
-        //   defaultChecked
-          className="data-[state=checked]:border-[#3F7C5F] data-[state=checked]:bg-[#3F7C5F] data-[state=checked]:text-white dark:data-[state=checked]:border-[#3F7C5F] dark:data-[state=checked]:bg-[#3F7C5F"
+          {...register(name)}
+          className="data-[state=checked]:border-[#3F7C5F] data-[state=checked]:bg-[#3F7C5F] data-[state=checked]:text-white dark:data-[state=checked]:border-[#3F7C5F] dark:data-[state=checked]:bg-[#3F7C5F]"
         />
-        <div >
-          <p className="">
-           Remember me
-          </p>
-        </div>
+        <span>{label}</span>
       </Label>
     </div>
-  )
-}
+  );
+};
 
-export default RememberMeCheckBox
+export default RememberMeCheckBox;

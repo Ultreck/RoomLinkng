@@ -54,7 +54,7 @@ const LoginFrom = ({ form, handleNext }: SignUpFormProps) => {
             />
             <div className="text flex items-center justify-between">
               <div className="text">
-                <RememberMeCheckBox id="login" />
+                <RememberMeCheckBox id="login" form={form} name="rememberMe"/>
               </div>
               <p className="text-sm text-gray-500 mb-4">
                 <a href="#" className="text-gray-500 underline italic">
