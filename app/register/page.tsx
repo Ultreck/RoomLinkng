@@ -15,26 +15,27 @@ const formSchema = z.object({
   password: z
     .string()
     .min(6, { message: "Password must be at least 6 characters long" }),
-  confirmPassword: z
-    .string()
-    .min(6, { message: "Confirm Password must be at least 6 characters long" }),
-  accountType: z.enum(["renter", "landlord"], {
+  role: z.enum(["renter", "landlord"], {
     message: "Please select an account type",
   }),
+  phoneNumber: z.string().min(11, { message: "Phone number must be at least 11 digits long" }),
+  fullName: z.string().min(3, { message: "Full name is required" }),
+  rememberMe: z.boolean().optional(),
 });
 const RegistrationPage = () => {
-  const form = useForm({
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
       password: "",
-      role: "",
+      role: "landlord",
       phoneNumber: "",
       fullName: "",
       rememberMe: false,
     },
   });
 
-  const [currentIndex, setCurrentIndex] = useState(3);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
 
   const handleNext = () => {
