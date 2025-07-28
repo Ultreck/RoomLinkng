@@ -3,7 +3,7 @@ import Image from "next/image";
 import { TestimonyCarousel } from "./TestimonyCarousel";
 const RegistrationSidebar = () => {
   return (
-    <div className="w-1/3 ">
+    <div className="w-full ">
       <div className="text bg-[#3F7C5F] p-5 flex flex-col justify-between min-h-[95vh] w-full rounded-[20px]  ">
         <div className="text">
           <h1 className="text-[32px] font-semibold text-[#FFFFFF] ">

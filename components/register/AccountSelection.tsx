@@ -5,7 +5,12 @@ import renterIcon from "../../assets/icons/renter-icon.svg";
 import landlordIcon from "../../assets/icons/landlord-icon.svg";
 import Image from "next/image";
 
-export default function AccountSelection() {
+type AccountSelectionProps = {
+  handleNext: () => void;
+  handlePrev: () => void;
+};
+
+export default function AccountSelection({handleNext, handlePrev}: AccountSelectionProps) {
   const [selected, setSelected] = useState<"landlord" | "renter" | null>(
     "landlord"
   );
@@ -13,7 +18,7 @@ export default function AccountSelection() {
   return (
     <div className="h-[95vh] mx-auto w-full p-10 flex flex-col justify-center">
       {/* Right Panel */}
-      <div className="bg-white mx-auto w-4/5 flex flex-col justify-center h-full">
+      <div className="bg-white mx-auto full flex flex-col justify-center h-full">
         <div className="w-full">
           <h2 className="text-xl font-bold text-gray-900 mb-2">Who are you?</h2>
           <p className="text-sm text-gray-500 mb-4">
@@ -29,7 +34,7 @@ export default function AccountSelection() {
           <div className="grid grid-cols-2 gap-4 mb-6">
             <div
               onClick={() => setSelected("landlord")}
-              className={`cursor-pointer h-[250px] border rounded-lg p-6 flex flex-col items-center justify-center gap-2 text-center transition-all ${
+              className={`cursor-pointer h-[250px] w-[250px] border rounded-lg p-6 flex flex-col items-center justify-center gap-2 text-center transition-all ${
                 selected === "landlord"
                   ? "bg-[#F3FFEB] border-[#004A27]"
                   : "hover:bg-gray-50"
@@ -50,7 +55,7 @@ export default function AccountSelection() {
             </div>
             <div
               onClick={() => setSelected("renter")}
-              className={`cursor-pointer border rounded-lg p-6 flex flex-col items-center justify-center gap-2 text-center transition-all ${
+              className={`cursor-pointer h-[250px] w-[250px] border rounded-lg p-6 flex flex-col items-center justify-center gap-2 text-center transition-all ${
                 selected === "renter"
                   ? "bg-[#F3FFEB] border-[#004A27]"
                   : "hover:bg-gray-50"
@@ -71,8 +76,11 @@ export default function AccountSelection() {
             </div>
           </div>
 
-          <button className="w-full bg-[#3F7C5F] text-white py-3 rounded-lg font-semibold hover:bg-[#36624D] transition">
+          <button onClick={handleNext} className="w-full bg-[#3F7C5F] text-white py-3 rounded-lg font-semibold hover:bg-[#36624D] transition">
             Continue
+          </button>
+          <button onClick={handlePrev} className="w-full bg-[#3F7C5F] text-white py-3 rounded-lg font-semibold hover:bg-[#36624D] transition">
+            BAck to login
           </button>
         </div>
       </div>

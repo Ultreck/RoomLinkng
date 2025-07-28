@@ -1,11 +1,15 @@
-import React from 'react'
+import RegistrationSidebar from "@/components/register/RegistrationSidebar";
+import React from "react";
 
-const RegisterLayout = ({children}: {children: React.ReactNode}) => {
+const RegisterLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div>
-        {children}
+    <div className="flex p-5 w-full">
+      <div className="text w-1/3 z-20">
+        <RegistrationSidebar />
+      </div>
+      <div className="text w-2/3">{children}</div>
     </div>
-  )
-}
+  );
+};
 
-export default RegisterLayout
+export default RegisterLayout;
