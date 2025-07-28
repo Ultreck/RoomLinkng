@@ -40,7 +40,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
     >
       <div className="relative">
         {/* Room Image */}
-        <div className="relative rounded-[20px] h-[195px] w-[272px] overflow-hidden">
+        <div className="relative rounded-[20px] h-[175px] w-[272px] overflow-hidden">
           <Image
             src={img}
             alt={title}

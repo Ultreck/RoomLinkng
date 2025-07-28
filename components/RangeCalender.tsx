@@ -21,7 +21,7 @@ const RangeCalender = ({ children }: { children: React.ReactNode }) => {
           selected={date}
           disabled={{ before: new Date() }}
           onSelect={setDate}
-          className="rounded-lg border shadow-sm"
+          className="rounded-lg w-[2/3] border shadow-sm"
         />
       </DropdownMenuContent>
     </DropdownMenu>

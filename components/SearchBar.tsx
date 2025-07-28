@@ -6,12 +6,17 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  SelectLabel,
+  SelectGroup,
 } from "@/components/ui/select";
 import { MapPin, Calendar, Search } from "lucide-react";
 import searchBg from "../assets/images/search-bg.png";
 import Image from "next/image";
 import filterIcon from "../assets/icons/filter-icon.svg";
 import RangeCalender from "./RangeCalender";
+import { ChevronDown } from "lucide-react";
+import { endDate } from "@/lib/helper";
+
 const SearchBar = () => {
   return (
     <div
@@ -32,18 +37,40 @@ const SearchBar = () => {
 
           <div className="text flex bg-gray-100  h-14 rounded-full shadow-md px-3 justify-between py-2 space-x-7">
             {/* Location Selector */}
-            <div className="flex items-center space-x-2 px-8 bordr-r border-white bg-white rounded-full">
-              <MapPin className="h-4 w-4 text-green-600 hover:text-green-700 flex-shrink-0" />
+            <div className="flex items-center space-x-2 w-64 px-8 bordr-r border-white bg-white rounded-full">
               <Select>
                 <SelectTrigger className="border-none shadow-none text-[#474747] p-0 h-auto focus:ring-0">
-                  <SelectValue placeholder="Where do you want to go" />
+                  <SelectValue
+                    placeholder={
+                      <span className="flex items-center gap-2">
+                        {" "}
+                        <MapPin className="h-4 w-4 text-green-600 hover:text-green-700 flex-shrink-0" />
+                        Where do you want to go
+                      </span>
+                    }
+                  />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="lagos">Lagos</SelectItem>
-                  <SelectItem value="abuja">Abuja</SelectItem>
-                  <SelectItem value="ibadan">Ibadan</SelectItem>
-                  <SelectItem value="kano">Kano</SelectItem>
-                  <SelectItem value="port-harcourt">Port Harcourt</SelectItem>
+                  <SelectGroup>
+                    <SelectLabel>Suggestions</SelectLabel>
+                    {[
+                      "Find rooms around you",
+                      "Ikeja, Lagos",
+                      "Elebu estate, Ibadan",
+                      "Gbagada, Lagos",
+                      "Ajah, Lagos",
+                      "Apata, Ibadan",
+                    ].map((city: string) => (
+                      <SelectItem
+                        key={city}
+                        className="flex items-center space-x-2"
+                        value={city}
+                      >
+                        <MapPin className="h-4 w-4 text-green-600 hover:text-green-700 flex-shrink-0" />
+                        {city}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             </div>
@@ -51,10 +78,11 @@ const SearchBar = () => {
             {/* Available From Date */}
             <div className="flex items-center  w-full space-x-2 px-8 border-r border-white bg-white rounded-full flex-1">
               <RangeCalender>
-                <Button className="flex text-gray-500 border-0 focus-visible:border-0 focus-visible:ring-0 outline-0 bg-transparent hover:bg-transparent font-normal">
+                <p className="flex text-gray-500 border-0 outline-0 w-40 justify-between items-center space-x-2 font-normal">
                   <Calendar className="h-4 w-4 text-green-600 hover:text-green-700 flex-shrink-0" />
                   Available from
-                </Button>
+                  <ChevronDown size={16} className="text-gray-400" />
+                </p>
               </RangeCalender>
             </div>
 
@@ -63,21 +91,21 @@ const SearchBar = () => {
               <Calendar className="h-4 w-4 text-green-600 hover:text-green-700 flex-shrink-0" />
               <Select>
                 <SelectTrigger className="border-none shadow-none p-0 h-auto focus:ring-0">
-                  <SelectValue placeholder="July, 2025" />
+                  <SelectValue placeholder="July, 28, 2025" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="jan-2025">January, 2025</SelectItem>
-                  <SelectItem value="feb-2025">February, 2025</SelectItem>
-                  <SelectItem value="mar-2025">March, 2025</SelectItem>
-                  <SelectItem value="apr-2025">April, 2025</SelectItem>
-                  <SelectItem value="may-2025">May, 2025</SelectItem>
-                  <SelectItem value="jun-2025">June, 2025</SelectItem>
-                  <SelectItem value="jul-2025">July, 2025</SelectItem>
-                  <SelectItem value="aug-2025">August, 2025</SelectItem>
-                  <SelectItem value="sep-2025">September, 2025</SelectItem>
-                  <SelectItem value="oct-2025">October, 2025</SelectItem>
-                  <SelectItem value="nov-2025">November, 2025</SelectItem>
-                  <SelectItem value="dec-2025">December, 2025</SelectItem>
+                  <SelectGroup>
+                    <SelectLabel>Minimun of one month</SelectLabel>
+                    {endDate.map((date) => (
+                      <SelectItem
+                        key={date?.value}
+                        value={date?.value}
+                        className="flex items-center space-x-2"
+                      >
+                        <span>{date?.label}</span>
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             </div>
@@ -89,11 +117,19 @@ const SearchBar = () => {
                   <SelectValue placeholder="Rooms" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="1">1 Room</SelectItem>
-                  <SelectItem value="2">2 Rooms</SelectItem>
-                  <SelectItem value="3">3 Rooms</SelectItem>
-                  <SelectItem value="4">4 Rooms</SelectItem>
-                  <SelectItem value="5+">5+ Rooms</SelectItem>
+                  <SelectGroup>
+                    <SelectLabel>What do you need?</SelectLabel>
+                    {["Rooms", "Property"].map((option) => (
+                      <SelectItem
+                        key={option}
+                        value={option}
+                        className="flex items-center space-x-2"
+                      >
+                        <MapPin className="h-4 w-4 text-gray-500 hover:text-gray-600 flex-shrink-0" />
+                        <span>{option}</span>
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
                 </SelectContent>
               </Select>
             </div>
