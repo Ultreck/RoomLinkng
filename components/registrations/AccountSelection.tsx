@@ -7,10 +7,9 @@ import Image from "next/image";
 
 type AccountSelectionProps = {
   handleNext: () => void;
-  handlePrev: () => void;
 };
 
-export default function AccountSelection({handleNext, handlePrev}: AccountSelectionProps) {
+export default function AccountSelection({handleNext}: AccountSelectionProps) {
   const [selected, setSelected] = useState<"landlord" | "renter" | null>(
     "landlord"
   );
@@ -31,10 +30,10 @@ export default function AccountSelection({handleNext, handlePrev}: AccountSelect
           </p>
 
           {/* Options */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
+          <div className="grid mt-10 grid-cols-2 gap-4 mb-6">
             <div
               onClick={() => setSelected("landlord")}
-              className={`cursor-pointer h-[250px] w-[250px] border rounded-lg p-6 flex flex-col items-center justify-center gap-2 text-center transition-all ${
+              className={`cursor-pointer h-[250px] w-[280px] border rounded-lg p-6 flex flex-col items-center justify-center gap-2 text-center transition-all ${
                 selected === "landlord"
                   ? "bg-[#F3FFEB] border-[#004A27]"
                   : "hover:bg-gray-50"
@@ -55,7 +54,7 @@ export default function AccountSelection({handleNext, handlePrev}: AccountSelect
             </div>
             <div
               onClick={() => setSelected("renter")}
-              className={`cursor-pointer h-[250px] w-[250px] border rounded-lg p-6 flex flex-col items-center justify-center gap-2 text-center transition-all ${
+              className={`cursor-pointer h-[250px] w-[280px] border rounded-lg p-6 flex flex-col items-center justify-center gap-2 text-center transition-all ${
                 selected === "renter"
                   ? "bg-[#F3FFEB] border-[#004A27]"
                   : "hover:bg-gray-50"
@@ -76,12 +75,10 @@ export default function AccountSelection({handleNext, handlePrev}: AccountSelect
             </div>
           </div>
 
-          <button onClick={handleNext} className="w-full bg-[#3F7C5F] text-white py-3 rounded-lg font-semibold hover:bg-[#36624D] transition">
+          <button onClick={handleNext} className="w-full h-14 mt-10 bg-[#3F7C5F] text-white py-3 rounded-lg font-semibold hover:bg-[#36624D] transition">
             Continue
           </button>
-          <button onClick={handlePrev} className="w-full bg-[#3F7C5F] text-white py-3 rounded-lg font-semibold hover:bg-[#36624D] transition">
-            BAck to login
-          </button>
+          
         </div>
       </div>
     </div>

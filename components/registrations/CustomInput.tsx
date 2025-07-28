@@ -39,21 +39,23 @@ const CustomInput = ({
       render={({ field }) => (
         <FormItem>
           {isPassword ? (
-            <FormLabel>
-              <p className="text flex justify-between items-center">
+            <FormLabel className="font-normal text-gray-500">
+              <p className="flex items-center justify-between  w-full">
                 {label}{" "}
                 {type === "text" ? (
-                  <span className="text flex items-center">
-                    <Eye
+                  <span className="text-[#3F7C5F] flex items-center gap-2">
+                    <EyeOff
+                      size={18}
                       onClick={() => setType && setType("password")}
-                      className="inline-block ml-1 cursor-pointer"
+                      className="inline-block ml-1 mx-1 cursor-pointer"
                     />{" "}
                     Hide
                   </span>
                 ) : (
-                  <span className="text flex items-center">
-                    <EyeOff
-                      className="inline-block ml-1 cursor-pointer"
+                  <span className="text-[#3F7C5F] flex items-center">
+                    <Eye
+                      size={18}
+                      className="inline-block ml-1 mx-1 cursor-pointer"
                       onClick={() => setType && setType("text")}
                     />
                     Show
@@ -62,7 +64,7 @@ const CustomInput = ({
               </p>
             </FormLabel>
           ) : (
-            <FormLabel>{label}</FormLabel>
+            <FormLabel className="font-normal text-gray-500">{label}</FormLabel>
           )}
           <FormControl>
             {(() => {
@@ -77,6 +79,7 @@ const CustomInput = ({
                       placeholder={placeholder}
                       {...field}
                       value={field.value ?? ""}
+                      className="h-[54px]"
                     />
                   );
 

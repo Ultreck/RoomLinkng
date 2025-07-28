@@ -1,4 +1,4 @@
-import RegistrationSidebar from "@/components/register/RegistrationSidebar";
+import RegistrationSidebar from "@/components/registrations/RegistrationSidebar";
 import React from "react";
 
 const RegisterLayout = ({ children }: { children: React.ReactNode }) => {

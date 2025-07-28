@@ -1,13 +1,14 @@
 "use client";
 
-import AccountSelection from "@/components/register/AccountSelection";
+import AccountSelection from "@/components/registrations/AccountSelection";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "framer-motion";
 import { Form } from "@/components/ui/form";
-import SignUpForm from "@/components/register/SignUpForm";
+import SignUpForm from "@/components/registrations/SignUpForm";
+import LoginFrom from "@/components/registrations/LoginFrom";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -33,9 +34,9 @@ const RegistrationPage = () => {
     },
   });
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(3);
   const [direction, setDirection] = useState(1);
-  
+
   const handleNext = () => {
     setDirection(1);
     setCurrentIndex((prev) => prev + 1);
@@ -63,7 +64,6 @@ const RegistrationPage = () => {
     }),
   };
 
-
   return (
     <AnimatePresence custom={direction} mode="wait">
       <motion.div
@@ -75,8 +75,13 @@ const RegistrationPage = () => {
         exit="exit"
       >
         <div className="">
-        <SignUpForm form={form} handleNext={handleNext} />
-          {/* <AccountSelection handleNext={handleNext} handlePrev={handlePrev} /> */}
+          {currentIndex === 0 && <AccountSelection handleNext={handleNext} />}
+          {currentIndex === 1 && (
+            <SignUpForm form={form} handleNext={handleNext} />
+          )}
+          {currentIndex === 3 && (
+            <LoginFrom form={form} handleNext={handleNext} />
+          )}
         </div>
       </motion.div>
     </AnimatePresence>
