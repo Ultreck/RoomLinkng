@@ -3,17 +3,19 @@ import { Button } from "../ui/button";
 import successIcon from "../../assets/icons/success_iconsvg.svg";
 import Image from "next/image";
 import useParamHook from "@/hooks/use-param-hook";
-
+import Confetti from 'react-confetti';
+import { useWindowSize } from 'react-use';
 
 type successType = {
   title: string;
 };
 const SuccessPage = ({ title }: successType) => {
 const {handleSearchParams} = useParamHook();
-  
+  const { width, height } = useWindowSize();
 
   return (
     <div className="mt-20">
+       <Confetti width={width} height={height} />
       <div className="text flex justify-center flex-col h-[70vh] items-center w-full">
         <div className="text w-1/2  mx-auto">
           <div className="text flex justify-center items-center">
