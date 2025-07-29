@@ -11,6 +11,7 @@ import SignUpForm from "@/components/registrations/SignUpForm";
 import LoginFrom from "@/components/registrations/LoginFrom";
 import SuccessPage from "@/components/registrations/SuccessPage";
 import useParamHook from "@/hooks/use-param-hook";
+import ForgottenPassword from "@/components/ForgottenPassword";
 
 const formSchema = z.object({
   email: z.string().regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email format"),
@@ -106,7 +107,7 @@ const RegistrationPage = () => {
         {mode === "forgot-password" && (
           <div className="text">
             {currentIndex === 3 && (
-              <SuccessPage title={"Registration completed"} />
+              <ForgottenPassword  />
             )}
           </div>
         )}

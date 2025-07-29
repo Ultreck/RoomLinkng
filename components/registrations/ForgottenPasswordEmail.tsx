@@ -1,35 +1,44 @@
 "use client";
 
-import React, { useState } from "react";
-import { Form } from "../ui/form";
-import CustomInput from "./CustomInput";
-import { Button } from "../ui/button";
-import RememberMeCheckBox from "./RememberMeCheckBox";
-import { useForm } from "react-hook-form";
-import z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import useParamHook from "@/hooks/use-param-hook";
+import React, { useState } from "react";
+import { Form, useForm } from "react-hook-form";
+import z from "zod";
 import { Loader } from "lucide-react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import CustomInput from "./CustomInput";
+import RememberMeCheckBox from "./RememberMeCheckBox";
+import { Button } from "../ui/button";
+
 
 const formSchema = z.object({
   email: z.string().regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email format"),
   password: z
     .string()
     .min(6, { message: "Password must be at least 6 character long." }),
-  rememberMe: z.boolean().optional(),
+  confirmPasswrod: z
+    .string()
+    .min(6, { message: "Password must be at least 6 character long." }),
+
+  otpCode: z.string().min(5, { message: "Otp should be 5 character long" }),
 });
-const LoginFrom = () => {
-  const [passType, setPassType] = useState<"text" | "password">("password");
+
+const ForgottenPasswordEmail = () => {
+
+
+     const [passType, setPassType] = useState<"text" | "password">("password");
   const [isLoading, setIsLoading] = useState(false);
   const { removeQueryParams, handleSearchParams } = useParamHook();
-  const formHook = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
       password: "",
-      rememberMe: false,
+      confirmPasswrod: "",
+      otpCode: "",
     },
   });
+
   const onSubmit = (data: any) => {
     console.log(data);
     setIsLoading(true);
@@ -40,9 +49,9 @@ const LoginFrom = () => {
   return (
     <div className="">
       <div className="text flex justify-center items-center w-full">
-        <Form {...formHook}>
+        <Form {...form}>
           <form
-            onSubmit={formHook.handleSubmit(onSubmit)}
+            onSubmit={form.handleSubmit(onSubmit)}
             className="w-2/3 space-y-8 mt-10"
           >
             <div className="text">
@@ -65,26 +74,22 @@ const LoginFrom = () => {
               name="email"
               label="Email address"
               placeholder="you@example.com"
-              form={formHook}
+              form={form}
             />
             <CustomInput
               type={passType}
               name="password"
               label="Password"
-              form={formHook}
+              form={form}
               setType={setPassType}
               isPassword={true}
             />
             <div className="text flex items-center justify-between">
               <div className="text">
-                <RememberMeCheckBox
-                  id="login"
-                  form={formHook}
-                  name="rememberMe"
-                />
+                <RememberMeCheckBox id="login" form={form} name="rememberMe" />
               </div>
               <p className="text-sm text-gray-500 mb-4">
-                <a  onClick={() => handleSearchParams("forgot-password")} href="#" className="text-gray-500 underline italic">
+                <a href="#" className="text-gray-500 underline italic">
                   Forgot your password?{" "}
                 </a>
               </p>
@@ -102,7 +107,7 @@ const LoginFrom = () => {
         </Form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default LoginFrom;
+export default ForgottenPasswordEmail
