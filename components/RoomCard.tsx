@@ -39,7 +39,6 @@ const RoomCard: React.FC<RoomCardProps> = ({
       className="group cursor-pointer shadow-none hover:shadow-lg p-2 rounded-[20px] transition-shadow duration-300 overflow-hidden"
     >
       <div className="relative">
-        {/* Room Image */}
         <div className="relative rounded-[20px] h-[175px] w-[272px] overflow-hidden">
           <Image
             src={img}
@@ -47,38 +46,34 @@ const RoomCard: React.FC<RoomCardProps> = ({
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
-          {/* Favorite Button */}
           {hoveredId === id && (
             <Button
               variant="ghost"
               size="icon"
-              className={`absolute top-3 right-3 rounded-full bg-white/80 hover:bg-white ${
-                isFavorite ? "text-red-500" : "text-gray-600"
+              className={`absolute bottom-3 right-3 rounded-full bg-white/80 hover:bg-white ${
+                isFavorite ? "text-[#00A859]" : "text-gray-600"
               }`}
             >
               <Heart
-                className={`h-4 w-4 ${isFavorite ? "fill-current" : ""}`}
+                className={`h-4 w-4 cursor-pointer ${
+                  isFavorite ? "fill-current" : ""
+                }`}
               />
             </Button>
           )}
         </div>
 
-        {/* Room Title */}
         <h3 className="font-semibold text-gray-900 transition-colors">
           {title}
         </h3>
 
-        {/* Rating and Price Row */}
         <div className="flex items-center justify-between">
-          {/* Location */}
-          {/* Rating */}
           <div className="flex items-center space-x-1">
             <p className="text-xs text-gray-800">{location}</p>
             <Star className="h-3 w-3 text-yellow-400 fill-current" />
             <span className="text-xs font-medium text-gray-900">{rating}</span>
           </div>
 
-          {/* Price */}
           <div className="text-right">
             <span className="text-lg font-bold text-gray-900">{price}</span>
             <span className="text-xs text-gray-600">/room</span>
