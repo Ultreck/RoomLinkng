@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form } from "../ui/form";
 import CustomInput from "./CustomInput";
 import { Button } from "../ui/button";
+import { Loader } from 'lucide-react';
+import useParamHook from "@/hooks/use-param-hook";
 
 type SignUpFormProps = {
   form: any;
@@ -11,10 +13,19 @@ type SignUpFormProps = {
 };
 const SignUpForm = ({ form, handleNext }: SignUpFormProps) => {
   const [passType, setPassType] = useState<"text" | "password">("password");
+  const [isLoading, setIsLoading] = useState(false);
+const {handleSearchParams} = useParamHook();
 
+  
   const onSubmit = (data: any) => {
+    setIsLoading(true);
     console.log(data);
-    handleNext();
+    setTimeout(() => {
+      setIsLoading(false);
+      handleSearchParams('login');
+      // handleNext();
+
+    }, 5000)
   };
   return (
     <div className="">
@@ -22,7 +33,7 @@ const SignUpForm = ({ form, handleNext }: SignUpFormProps) => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="w-2/3 space-y-8 mt-10"
+            className="w-2/3 space-y-7 mt-10"
           >
             <div className="text">
               <h2 className="text-xl font-bold text-gray-900 mb-2">
@@ -53,12 +64,12 @@ const SignUpForm = ({ form, handleNext }: SignUpFormProps) => {
               type={"text"}
               name="phoneNumber"
               label="Phone number"
-              placeholder="you@example.com"
+              placeholder="e.g +234 123 4567"
               form={form}
             />
             <CustomInput
               type={passType}
-              name="pasword"
+              name="password"
               label="Password"
               form={form}
               setType={setPassType}
@@ -85,8 +96,11 @@ const SignUpForm = ({ form, handleNext }: SignUpFormProps) => {
             <Button
               className="bg-[#3F7C5F] hover:bg-[#36624D] w-full h-14 "
               type="submit"
+              disabled={isLoading}
             >
-              Submit
+              {isLoading && <Loader className="animate-spin" /> }
+               
+              {isLoading? "Submitting..." : "Submit"}
             </Button>
           </form>
         </Form>

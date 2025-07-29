@@ -5,25 +5,44 @@ import { Form } from "../ui/form";
 import CustomInput from "./CustomInput";
 import { Button } from "../ui/button";
 import RememberMeCheckBox from "./RememberMeCheckBox";
+import { useForm } from "react-hook-form";
+import z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import useParamHook from "@/hooks/use-param-hook";
+import { Loader } from "lucide-react";
 
-type SignUpFormProps = {
-  form: any;
-  handleNext: () => void;
-};
-
-const LoginFrom = ({ form, handleNext }: SignUpFormProps) => {
+const formSchema = z.object({
+  email: z.string().regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email format"),
+  password: z
+    .string()
+    .min(6, { message: "Password must be at least 6 character long." }),
+  rememberMe: z.boolean().optional(),
+});
+const LoginFrom = () => {
   const [passType, setPassType] = useState<"text" | "password">("password");
-
+  const [isLoading, setIsLoading] = useState(false);
+  const { removeQueryParams, handleSearchParams } = useParamHook();
+  const formHook = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+      rememberMe: false,
+    },
+  });
   const onSubmit = (data: any) => {
     console.log(data);
-    handleNext();
+    setIsLoading(true);
+    setTimeout(() => {
+      removeQueryParams("landlord");
+    }, 3000);
   };
   return (
     <div className="">
       <div className="text flex justify-center items-center w-full">
-        <Form {...form}>
+        <Form {...formHook}>
           <form
-            onSubmit={form.handleSubmit(onSubmit)}
+            onSubmit={formHook.handleSubmit(onSubmit)}
             className="w-2/3 space-y-8 mt-10"
           >
             <div className="text">
@@ -32,7 +51,11 @@ const LoginFrom = ({ form, handleNext }: SignUpFormProps) => {
               </h2>
               <p className="text-sm font-bold text-[#212121] mb-4">
                 Welcome back! Login with your details. Doesn’t have an account?
-                <a href="#" className="text-green-700 mx-0.5 font-bold">
+                <a
+                  onClick={() => handleSearchParams("signup")}
+                  href="#"
+                  className="text-green-700 mx-0.5 font-bold"
+                >
                   Signup
                 </a>
               </p>
@@ -42,19 +65,23 @@ const LoginFrom = ({ form, handleNext }: SignUpFormProps) => {
               name="email"
               label="Email address"
               placeholder="you@example.com"
-              form={form}
+              form={formHook}
             />
             <CustomInput
               type={passType}
-              name="pasword"
+              name="password"
               label="Password"
-              form={form}
+              form={formHook}
               setType={setPassType}
               isPassword={true}
             />
             <div className="text flex items-center justify-between">
               <div className="text">
-                <RememberMeCheckBox id="login" form={form} name="rememberMe"/>
+                <RememberMeCheckBox
+                  id="login"
+                  form={formHook}
+                  name="rememberMe"
+                />
               </div>
               <p className="text-sm text-gray-500 mb-4">
                 <a href="#" className="text-gray-500 underline italic">
@@ -65,8 +92,11 @@ const LoginFrom = ({ form, handleNext }: SignUpFormProps) => {
             <Button
               className="bg-[#3F7C5F] hover:bg-[#36624D] w-full h-14 "
               type="submit"
+              disabled={isLoading}
             >
-              Submit
+              {isLoading && <Loader className="animate-spin" />}
+
+              {isLoading ? "Submitting..." : "Submit"}
             </Button>
           </form>
         </Form>

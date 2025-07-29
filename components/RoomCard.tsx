@@ -64,7 +64,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
         </div>
 
         {/* Room Title */}
-        <h3 className="font-semibold text-gray-900 group-hover:text-orange-600 transition-colors">
+        <h3 className="font-semibold text-gray-900 transition-colors">
           {title}
         </h3>
 
