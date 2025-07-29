@@ -23,10 +23,8 @@ const formSchema = z.object({
   otpCode: z.string().min(5, { message: "Otp should be 5 character long" }),
 });
 
-const ForgottenPasswordEmail = () => {
-
-
-     const [passType, setPassType] = useState<"text" | "password">("password");
+const ForgotPasswordEmail = () => {
+         const [passType, setPassType] = useState<"text" | "password">("password");
   const [isLoading, setIsLoading] = useState(false);
   const { removeQueryParams, handleSearchParams } = useParamHook();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -47,7 +45,7 @@ const ForgottenPasswordEmail = () => {
     }, 3000);
   };
   return (
-    <div className="">
+      <div className="">
       <div className="text flex justify-center items-center w-full">
         <Form {...form}>
           <form
@@ -110,4 +108,4 @@ const ForgottenPasswordEmail = () => {
   )
 }
 
-export default ForgottenPasswordEmail
+export default ForgotPasswordEmail

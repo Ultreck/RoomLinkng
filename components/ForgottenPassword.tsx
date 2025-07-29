@@ -1,10 +1,11 @@
+import ForgotPasswordEmail from "./registrations/ForgotPasswordEmail";
 
 const ForgottenPassword = () => {
  
   return (
     <>
     <div className="text">
-        <ForgottenPassword />
+        <ForgotPasswordEmail />
     </div>
     </>
   );

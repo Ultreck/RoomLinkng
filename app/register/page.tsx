@@ -106,9 +106,7 @@ const RegistrationPage = () => {
 
         {mode === "forgot-password" && (
           <div className="text">
-            {currentIndex === 3 && (
-              <ForgottenPassword  />
-            )}
+            <ForgottenPassword />
           </div>
         )}
       </motion.div>
