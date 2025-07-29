@@ -39,7 +39,7 @@ const {handleSearchParams} = useParamHook();
               <h2 className="text-xl font-bold text-gray-900 mb-2">
                Hey, Hello 👋
               </h2>
-              <p className="text-sm font-bold text-[#212121] mb-4">
+              <p className="text-sm font-medium text-[#212121] mb-4">
                 Welcome to RoomLink. Please enter your details. Have an account?
                 <a href="#" className="text-green-700 mx-0.5 font-bold">
                   Login
@@ -94,7 +94,7 @@ const {handleSearchParams} = useParamHook();
               </p>
             </div>
             <Button
-              className="bg-[#3F7C5F] hover:bg-[#36624D] w-full h-14 "
+              className="bg-[#3F7C5F] cursor-pointer hover:bg-[#36624D] w-full h-14 "
               type="submit"
               disabled={isLoading}
             >

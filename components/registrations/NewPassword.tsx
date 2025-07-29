@@ -1,40 +1,41 @@
-"use client";
-
 import React, { useState } from "react";
-import { Loader } from "lucide-react";
+import { Form } from "../ui/form";
+import { useForm } from "react-hook-form";
+import z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import CustomInput from "./CustomInput";
 import { Button } from "../ui/button";
-import { Form } from "../ui/form";
+import { ChevronLeft, Loader } from "lucide-react";
 import useParamHook from "@/hooks/use-param-hook";
-import { ChevronLeft } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import z from "zod";
 
 const formSchema = z.object({
-  email: z.string().regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email format"),
+  oldPassword: z
+    .string()
+    .min(6, { message: "Password must atleast 6 characters long" }),
+  newPassword: z.string().min(6, { message: "" }),
 });
 
-
-type handleNexttype = {
+type handleNextProp = {
     handleNext: () => void;
 }
-const ForgotPasswordEmail = ({handleNext}: handleNexttype) => {
-  const [isLoading, setIsLoading] = useState(false);
-  const { handleSearchParams } = useParamHook();
+const NewPassword = ({handleNext}: handleNextProp) => {
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [passType, setPassType] = useState<"text" | "password">("password");
+  const {handleSearchParams} =useParamHook();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
+      oldPassword: "",
+      newPassword: "",
     },
   });
+
   const onSubmit = (data: any) => {
-    console.log(data);
     setIsLoading(true);
+    console.log(data);
     setTimeout(() => {
         handleNext();
         setIsLoading(false);
-      //   removeQueryParams("landlord");
     }, 3000);
   };
   return (
@@ -47,18 +48,27 @@ const ForgotPasswordEmail = ({handleNext}: handleNexttype) => {
           >
             <div className="text">
               <h2 className="text-xl font-bold text-gray-900 mb-2">
-                Forgot Password?
+                Set new password
               </h2>
               <p className="text-sm font-medium text-[#212121] mb-4">
-                No worries, we’ll send you reset instructions.
+                Must be at least 8 characters.
               </p>
             </div>
             <CustomInput
-              type={"text"}
-              name="email"
-              label="Email address"
-              placeholder="you@example.com"
+              type={passType}
+              name="oldPassword"
+              label="Old password"
               form={form}
+              setType={setPassType}
+              isPassword={false}
+            />
+            <CustomInput
+              type={passType}
+              name="newPassword"
+              label="New password"
+              form={form}
+              setType={setPassType}
+              isPassword={false}
             />
             <Button
               className="bg-[#3F7C5F] cursor-pointer hover:bg-[#36624D] w-full h-14 "
@@ -85,4 +95,4 @@ const ForgotPasswordEmail = ({handleNext}: handleNexttype) => {
   );
 };
 
-export default ForgotPasswordEmail;
+export default NewPassword;

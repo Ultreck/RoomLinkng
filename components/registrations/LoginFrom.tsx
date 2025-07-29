@@ -49,7 +49,7 @@ const LoginFrom = () => {
               <h2 className="text-xl font-bold text-gray-900 mb-2">
                 Let’s get you back in
               </h2>
-              <p className="text-sm font-bold text-[#212121] mb-4">
+              <p className="text-sm font-medium text-[#212121] mb-4">
                 Welcome back! Login with your details. Doesn’t have an account?
                 <a
                   onClick={() => handleSearchParams("signup")}
@@ -90,7 +90,7 @@ const LoginFrom = () => {
               </p>
             </div>
             <Button
-              className="bg-[#3F7C5F] hover:bg-[#36624D] w-full h-14 "
+              className="bg-[#3F7C5F] cursor-pointer hover:bg-[#36624D] w-full h-14 "
               type="submit"
               disabled={isLoading}
             >

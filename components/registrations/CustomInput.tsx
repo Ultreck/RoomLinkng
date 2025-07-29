@@ -39,7 +39,7 @@ const CustomInput = ({
       render={({ field }) => (
         <FormItem>
           {isPassword ? (
-            <FormLabel className="font-normal text-gray-500">
+            <FormLabel className="font-normal text-gray-600">
               <p className="flex items-center justify-between  w-full">
                 {label}{" "}
                 {type === "text" ? (
@@ -64,7 +64,7 @@ const CustomInput = ({
               </p>
             </FormLabel>
           ) : (
-            <FormLabel className="font-normal text-gray-500">{label}</FormLabel>
+            <FormLabel className="font-normal text-gray-600">{label}</FormLabel>
           )}
           <FormControl>
             {(() => {

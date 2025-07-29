@@ -28,7 +28,7 @@ const formSchema = z.object({
   rememberMe: z.boolean().optional(),
 });
 const RegistrationPage = () => {
-  const { handleSearchParams, mode } = useParamHook();
+  const { mode } = useParamHook();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -43,21 +43,18 @@ const RegistrationPage = () => {
   });
 
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const [currentLoginIndex, setCurrentLoginIndex] = useState<number>(0);
   const [direction, setDirection] = useState(1);
 
   const handleNext = () => {
     setDirection(1);
     setCurrentIndex((prev) => prev + 1);
-    // setCurrentLoginIndex((prev) => prev + 1);
     console.log(form.getValues());
   };
 
-  const handlePrev = () => {
-    setDirection(-1);
-    setCurrentIndex((prev) => prev - 1);
-    // setCurrentLoginIndex((prev) => prev - 1);
-  };
+  // const handlePrev = () => {
+  //   setDirection(-1);
+  //   setCurrentIndex((prev) => prev - 1);
+  // };
 
   const slideVariants = {
     initial: (direction: number) => ({
@@ -101,7 +98,7 @@ const RegistrationPage = () => {
         )}
 
         {mode === "login" && (
-          <div className="text">{currentLoginIndex === 0 && <LoginFrom />}</div>
+          <div className="text"><LoginFrom /></div>
         )}
 
         {mode === "forgot-password" && (
