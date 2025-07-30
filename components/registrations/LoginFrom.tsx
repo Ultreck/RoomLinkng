@@ -34,7 +34,7 @@ const LoginFrom = () => {
     console.log(data);
     setIsLoading(true);
     setTimeout(() => {
-      removeQueryParams("landlord");
+      removeQueryParams("renter");
     }, 3000);
   };
   return (

@@ -21,6 +21,10 @@ type DynamicInputProps = {
   description?: string;
   setType?: (type: "text" | "password") => void;
   isPassword?: boolean;
+  inputBorder?: boolean;
+  className?: string;
+  disabled?: boolean;
+  lableStyle?: string;
 };
 const CustomInput = ({
   type,
@@ -30,7 +34,11 @@ const CustomInput = ({
   form,
   description,
   setType,
+  inputBorder = true,
   isPassword = false,
+  className,
+  disabled = false,
+  lableStyle
 }: DynamicInputProps) => {
   return (
     <FormField
@@ -39,7 +47,7 @@ const CustomInput = ({
       render={({ field }) => (
         <FormItem>
           {isPassword ? (
-            <FormLabel className="font-normal text-gray-600">
+            <FormLabel className={`${lableStyle? lableStyle : "font-normal text-gray-600"}`}>
               <p className="flex items-center justify-between  w-full">
                 {label}{" "}
                 {type === "text" ? (
@@ -64,7 +72,7 @@ const CustomInput = ({
               </p>
             </FormLabel>
           ) : (
-            <FormLabel className="font-normal text-gray-600">{label}</FormLabel>
+            <FormLabel className={`${lableStyle? lableStyle : "font-normal text-gray-600"}`}>{label}</FormLabel>
           )}
           <FormControl>
             {(() => {
@@ -78,8 +86,9 @@ const CustomInput = ({
                       type={type}
                       placeholder={placeholder}
                       {...field}
-                      value={field.value ?? ""}
-                      className="h-[54px]"
+                      value={field.value ?? ""} 
+                      disabled={disabled}
+                      className={`${!inputBorder && ' border-0 shadow-none '} h-[54px] ${className? className : 'h-[54px]'}`}
                     />
                   );
 

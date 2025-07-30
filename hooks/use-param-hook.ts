@@ -5,12 +5,12 @@ const useParamHook = () => {
   const searchParams = useSearchParams();
   const mode = searchParams.get("mode");
 
-  const handleSearchParams = (param: string) => {
-    router.push(`?mode=${param}`);
+  const handleSearchParams = (param: string, key: string = "mode") => {
+    router.push(`?${key}=${param}`);
   };
 
   const removeQueryParams = (base: string) => {
-router.push(`/${base}`);
+    router.push(`/${base}`);
   };
   return {
     router,
