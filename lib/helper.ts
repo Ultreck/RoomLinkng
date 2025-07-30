@@ -14,6 +14,13 @@ type Testimonies = {
     role: string;
 }
 
+type WishListItemsProps = {
+    id: string;
+    title: string;
+    saved: string;
+    isFavorite: boolean,
+}
+
 export const endDate:EndDate[] = [
   { value: "jul-22-2025", label: "July, 22, 2025" },
   { value: "aug-2025", label: "August, 25, 2025" },
@@ -53,4 +60,128 @@ export const testimonies:Testimonies[] = [
         image: testy2.src,
         role: "Renter",
     },
+];
+
+
+export const ibadanRooms = [
+  {
+    id: "1",
+    title: "Tropic flat villa",
+    location: "Elebu Ibadan",
+    rating: 4.9,
+    price: "N30K",
+    imageUrl: "/api/placeholder/300/200",
+    isFavorite: false,
+  },
+  {
+    id: "2",
+    title: "Tropic flat villa",
+    location: "Elebu Ibadan",
+    rating: 4.9,
+    price: "N30K",
+    imageUrl: "/api/placeholder/300/200",
+    isFavorite: true,
+  },
+  {
+    id: "3",
+    title: "Tropic flat villa",
+    location: "Elebu Ibadan",
+    rating: 4.9,
+    price: "N30K",
+    imageUrl: "/api/placeholder/300/200",
+    isFavorite: false,
+  },
+  {
+    id: "4",
+    title: "Tropic flat villa",
+    location: "Elebu Ibadan",
+    rating: 4.9,
+    price: "N30K",
+    imageUrl: "/api/placeholder/300/200",
+    isFavorite: true,
+  },
+  {
+    id: "5",
+    title: "Tropic flat villa",
+    location: "Elebu Ibadan",
+    rating: 4.9,
+    price: "N30K",
+    imageUrl: "/api/placeholder/300/200",
+    isFavorite: false,
+  },
+];
+
+export const lagosRooms = [
+  {
+    id: "6",
+    title: "Tropic flat villa",
+    location: "Lekki Lagos",
+    rating: 4.9,
+    price: "N30K",
+    imageUrl: "/api/placeholder/300/200",
+    isFavorite: true,
+  },
+  {
+    id: "7",
+    title: "Tropic flat villa",
+    location: "Elebu Ibadan",
+    rating: 4.9,
+    price: "N30K",
+    imageUrl: "/api/placeholder/300/200",
+    isFavorite: false,
+  },
+  {
+    id: "8",
+    title: "Tropic flat villa",
+    location: "Elebu Ibadan",
+    rating: 4.9,
+    price: "N30K",
+    imageUrl: "/api/placeholder/300/200",
+    isFavorite: true,
+  },
+  {
+    id: "9",
+    title: "Tropic flat villa",
+    location: "Elebu Ibadan",
+    rating: 4.9,
+    price: "N30K",
+    imageUrl: "/api/placeholder/300/200",
+    isFavorite: true,
+  },
+  {
+    id: "10",
+    title: "Tropic flat villa",
+    location: "Elebu Ibadan",
+    rating: 4.9,
+    price: "N30K",
+    imageUrl: "/api/placeholder/300/200",
+    isFavorite: false,
+  },
+];
+
+export const whishListItems: WishListItemsProps[] = [
+ {
+    id: "1",
+    title: "For vacation",
+    saved: "2 saved",
+    isFavorite: true,
+  },
+ {
+    id: "2",
+    title: "For festival",
+    saved: "5 saved",
+    isFavorite: true,
+  },
+ {
+    id: "3",
+    title: "For break",
+    saved: "7 saved",
+    isFavorite: true,
+  },
+ {
+    id: "4",
+    title: "For residence",
+    saved: "7 saved",
+    isFavorite: true,
+  },
 ]

@@ -15,9 +15,10 @@ interface Room {
 interface RoomSectionProps {
   title: string;
   rooms: Room[];
+  nums: number;
 }
 
-const RoomSection: React.FC<RoomSectionProps> = ({ title, rooms }) => {
+const RoomSection: React.FC<RoomSectionProps> = ({ title, rooms, nums }) => {
   return (
     <div className="mb-5">
       {/* Section Header */}
@@ -29,8 +30,8 @@ const RoomSection: React.FC<RoomSectionProps> = ({ title, rooms }) => {
       </div>
 
       {/* Room Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {rooms.map((room) => (
+      <div className={`grid grid-cols-1 md:grid-cols-2 ${nums === 5? "lg:grid-cols-5" : "lg:grid-cols-3"}  gap-6`}>
+        {rooms?.slice(0, nums)?.map((room) => (
           <RoomCard
             key={room.id}
             id={room.id}

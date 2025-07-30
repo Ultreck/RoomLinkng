@@ -16,8 +16,12 @@ import filterIcon from "../assets/icons/filter-icon.svg";
 import RangeCalender from "./RangeCalender";
 import { ChevronDown } from "lucide-react";
 import { endDate } from "@/lib/helper";
+import { PriceFilterModal } from "./PriceFilterModal";
 
-const SearchBar = () => {
+type isSearchedProp = {
+  setIsSearched: (value: boolean) => void;
+};
+const SearchBar = ({ setIsSearched }: isSearchedProp) => {
   return (
     <div
       style={{ backgroundImage: `url(${searchBg.src})` }}
@@ -27,18 +31,26 @@ const SearchBar = () => {
         {/* Search Bar Container */}
         <div className="flex items-center justify-center space-x-5 ">
           {/* Filter Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-full border-2 h-14 w-14 shadow-md"
-          >
-            <Image width={24} height={24} src={filterIcon} alt="Filter icon" />
-          </Button>
+          <PriceFilterModal>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsSearched(true)}
+              className="rounded-full border-2 h-14 w-14 shadow-md"
+            >
+              <Image
+                width={24}
+                height={24}
+                src={filterIcon}
+                alt="Filter icon"
+              />
+            </Button>
+          </PriceFilterModal>
 
           <div className="text flex bg-gray-100  h-14 rounded-full shadow-md px-3 justify-between py-2 space-x-7">
             {/* Location Selector */}
             <div className="flex items-center space-x-2 w-64 px-8 bordr-r border-white bg-white rounded-full">
-              <Select>
+              <Select onValueChange={() => setIsSearched(true)}>
                 <SelectTrigger className="border-none shadow-none text-[#474747] p-0 h-auto focus:ring-0">
                   <SelectValue
                     placeholder={
@@ -76,7 +88,10 @@ const SearchBar = () => {
             </div>
 
             {/* Available From Date */}
-            <div className="flex items-center  w-full space-x-2 px-8 border-r border-white bg-white rounded-full flex-1">
+            <div
+              onClick={() => setIsSearched(true)}
+              className="flex items-center  w-full space-x-2 px-8 border-r border-white bg-white rounded-full flex-1"
+            >
               <RangeCalender>
                 <p className="flex text-gray-500 border-0 outline-0 w-40 justify-between items-center space-x-2 font-normal">
                   <Calendar className="h-4 w-4 text-green-600 hover:text-green-700 flex-shrink-0" />
@@ -89,7 +104,7 @@ const SearchBar = () => {
             {/* Month Selector */}
             <div className="flex items-center space-x-2 px-8 border-r border-white bg-white rounded-full flex-1">
               <Calendar className="h-4 w-4 text-green-600 hover:text-green-700 flex-shrink-0" />
-              <Select>
+              <Select onValueChange={() => setIsSearched(true)}>
                 <SelectTrigger className="border-none shadow-none p-0 h-auto focus:ring-0">
                   <SelectValue placeholder="July, 28, 2025" />
                 </SelectTrigger>
@@ -112,7 +127,7 @@ const SearchBar = () => {
 
             {/* Rooms Selector */}
             <div className="flex text-gray-800 items-center space-x-2 px-8 min-w-0 flex-1">
-              <Select>
+              <Select onValueChange={() => setIsSearched(true)}>
                 <SelectTrigger className="border-none text-gray-800 shadow-none p-0 h-auto focus:ring-0">
                   <SelectValue placeholder="Rooms" />
                 </SelectTrigger>

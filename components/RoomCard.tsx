@@ -8,11 +8,16 @@ import img from "../assets/images/house.png";
 interface RoomCardProps {
   id: string;
   title: string;
-  location: string;
-  rating: number;
-  price: string;
-  imageUrl: string;
+  location?: string;
+  rating?: number;
+  price?: string;
+  saved?: string;
+  imageUrl?: string;
   isFavorite?: boolean;
+  imgSize?: {
+    width: string;
+    height: string;
+  };
 }
 
 const RoomCard: React.FC<RoomCardProps> = ({
@@ -21,8 +26,10 @@ const RoomCard: React.FC<RoomCardProps> = ({
   location,
   rating,
   price,
+  imgSize,
   // imageUrl,
   isFavorite = false,
+  saved,
 }) => {
   const [hoveredId, setHoveredId] = useState("");
 
@@ -39,7 +46,11 @@ const RoomCard: React.FC<RoomCardProps> = ({
       className="group cursor-pointer shadow-none hover:shadow-lg p-2 rounded-[20px] transition-shadow duration-300 overflow-hidden"
     >
       <div className="relative">
-        <div className="relative rounded-[20px] h-[175px] w-[272px] overflow-hidden">
+        <div
+          className={`relative rounded-[20px] ${
+            imgSize?.height ? imgSize.height : "h-[175px]"
+          } ${imgSize?.width ? imgSize.width : "w-[260px]"} overflow-hidden`}
+        >
           <Image
             src={img}
             alt={title}
@@ -69,15 +80,18 @@ const RoomCard: React.FC<RoomCardProps> = ({
 
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-1">
-            <p className="text-xs text-gray-800">{location}</p>
-            <Star className="h-3 w-3 text-yellow-400 fill-current" />
+            <p className="text-xs text-gray-800">{location || saved}</p>
+            {rating && (
+              <Star className="h-3 w-3 text-yellow-400 fill-current" />
+            )}
             <span className="text-xs font-medium text-gray-900">{rating}</span>
           </div>
-
-          <div className="text-right">
-            <span className="text-lg font-bold text-gray-900">{price}</span>
-            <span className="text-xs text-gray-600">/room</span>
-          </div>
+          {price && (
+            <div className="text-right">
+              <span className="text-lg font-bold text-gray-900">{price}</span>
+              <span className="text-xs text-gray-600">/room</span>
+            </div>
+          )}
         </div>
       </div>
     </div>
