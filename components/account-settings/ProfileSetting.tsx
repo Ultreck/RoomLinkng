@@ -6,15 +6,16 @@ import { Form } from '../ui/form';
 import CustomInput from '../registrations/CustomInput';
 import imgProfile from "../../assets/images/profile.png";
 import { UseFormReturn } from 'react-hook-form';
-import { FormValues } from '@/app/renter/settings/page';
+import { SettingFormValues } from '@/app/renter/settings/page';
+import { fields } from '@/lib/helper';
 
 type profileSettingType = {
-    form: UseFormReturn<FormValues>;
-    onSubmit: (data: FormValues) => void;
+    form: UseFormReturn<SettingFormValues>;
+    onSubmit: (data: SettingFormValues) => void;
     editingField: string | undefined;
-    handleSave: (field: any) => void;
+    handleSave: (field: string) => void;
     handleCancel: () => void;
-    handleEdit: (field: any) => void;
+    handleEdit: (field: string) => void;
 
 }
 const ProfileSetting = ({form, onSubmit, editingField, handleSave, handleCancel, handleEdit}: profileSettingType) => {
@@ -54,38 +55,7 @@ const ProfileSetting = ({form, onSubmit, editingField, handleSave, handleCancel,
             </div>
 
             <div className="space-y-4">
-              {[
-                {
-                  key: "fullname",
-                  label: "Full name",
-                  placeholder: "Enter your full name",
-                },
-                {
-                  key: "email",
-                  label: "Email address",
-                  placeholder: "Enter your email",
-                },
-                {
-                  key: "phone",
-                  label: "Phone number",
-                  placeholder: "Enter your phone number",
-                },
-                {
-                  key: "nin",
-                  label: "Identity verification (NIN)",
-                  placeholder: "Verify your account with your NIN",
-                },
-                {
-                  key: "address",
-                  label: "Residential address",
-                  placeholder: "Enter your address",
-                },
-                {
-                  key: "birthdate",
-                  label: "Birthdate",
-                  placeholder: "MM/DD/YYYY",
-                },
-              ].map(({ key, label, placeholder }) => (
+              {fields.map(({ key, label, placeholder }) => (
                 <div
                   key={key}
                   className="space-y-2 flex justify-between items-center"
@@ -95,7 +65,7 @@ const ProfileSetting = ({form, onSubmit, editingField, handleSave, handleCancel,
                       onSubmit={form.handleSubmit(onSubmit)}
                       className="w-2/3 space-y-8 "
                     >
-                      <CustomInput
+                      <CustomInput<SettingFormValues>
                         type={"text"}
                         name={key}
                         label={label}

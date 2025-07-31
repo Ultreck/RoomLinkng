@@ -1,10 +1,10 @@
 import RoomCard from '@/components/RoomCard'
-import { lagosRooms, whishListItems } from '@/lib/helper'
+import { whishListItems } from '@/lib/helper'
 import React from 'react'
 
 const WishlistPage = () => {
   return (
-        <div className={`grid grid-cols-1 lg:grid-cols-4 max-w-8xl mx-auto p-5 space-x-4 `}>
+        <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-8xl mx-auto p-5 space-x-4 `}>
         {whishListItems?.map((room) => (
           <RoomCard
             key={room.id}
@@ -12,7 +12,7 @@ const WishlistPage = () => {
             title={room.title}
             saved={room.saved}
             isFavorite={room.isFavorite}
-            imgSize={{ width: "w-[343px]", height: "h-[220px]" }}
+            imgSize={{ width: "w-full", height: "h-full" }}
           />
         ))}
       </div>

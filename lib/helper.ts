@@ -1,3 +1,4 @@
+import { SettingFormValues } from '@/app/renter/settings/page';
 import testy1 from '../assets/images/testy-image1.png';
 import testy2 from '../assets/images/testy-immage2.png';
 // import testy3 from '../assets/images/profile.png'
@@ -184,4 +185,40 @@ export const whishListItems: WishListItemsProps[] = [
     saved: "7 saved",
     isFavorite: true,
   },
-]
+];
+
+
+export const fields: { key: keyof SettingFormValues; label: string; placeholder: string }[] = [
+  {
+    key: "fullname",
+    label: "Full name",
+    placeholder: "Enter your full name",
+  },
+  {
+    key: "email",
+    label: "Email address",
+    placeholder: "Enter your email",
+  },
+  {
+    key: "phone",
+    label: "Phone number",
+    placeholder: "Enter your phone number",
+  },
+  {
+    key: "nin",
+    label: "Identity verification (NIN)",
+    placeholder: "Verify your account with your NIN",
+  },
+  {
+    key: "address",
+    label: "Residential address",
+    placeholder: "Enter your address",
+  },
+  {
+    key: "birthdate",
+    label: "Birthdate",
+    placeholder: "MM/DD/YYYY",
+  },
+];
+
+

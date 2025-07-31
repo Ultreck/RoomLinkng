@@ -16,13 +16,13 @@ const RenterPage = () => {
     <>
       <SearchBar setIsSearched={setIsSearched} />
     <div className="flex flex-col max-w-8xl mx-auto p-5 space-y-6">
-      <div className="text flex justify-center w-full lg:justify-between space-x-5">
-        <div className="text mx-auto">
+      <div className="grid grid-cols-5 space-x-5 border">
+        <div className={`text mx-auto ${isSearched? "col-span-5 lg:col-span-3" : "col-span-5"} `}>
           <RoomSection title="Rooms in Ibadan" nums={isSearched? 3 : 5} rooms={ibadanRooms} />
           <RoomSection title="Rooms in Lagos" nums={isSearched? 3 : 5} rooms={lagosRooms} />
         </div>
         {isSearched && 
-        <div className="text hidden lg:block h-[600px] lg:w-[517px] lg:h-[623px]">
+        <div className="text hidden col-span-2 lg:flex">
           <Image
             src={img}
             alt={"map"}

@@ -31,7 +31,7 @@ const formSchema = z.object({
     .min(5, { message: "Address should at least be 5 letter words" }),
   birthdate: z.string({ message: "Birthdate is required" }),
 });
-export type FormValues = z.infer<typeof formSchema>;
+export type SettingFormValues = z.infer<typeof formSchema>;
 function AccountSettingsPage() {
   const [activeTab, setActiveTab] = useState("profile");
   const [editingField, setEditingField] = useState<string | undefined>("");
@@ -76,9 +76,11 @@ function AccountSettingsPage() {
     setEditingField(undefined);
   };
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: z.infer<typeof formSchema>) => {
     setIsLoading(true);
     console.log(data);
+    console.log(isLoading);
+    
     setTimeout(() => {
       setIsLoading(false);
     }, 3000);
@@ -100,13 +102,7 @@ function AccountSettingsPage() {
       case "kyc":
         return <KycSetting />;
       case "password":
-        return (
-          <PasswordSetting
-            isLoading={isLoading}
-            form={form}
-            onSubmit={onSubmit}
-          />
-        );
+        return <PasswordSetting />;
       case "privacy":
         return <PrivacySetting />;
       default:

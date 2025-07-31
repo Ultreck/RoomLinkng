@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Heart, Star } from "lucide-react";
 import Image from "next/image";
@@ -14,10 +13,10 @@ interface RoomCardProps {
   saved?: string;
   imageUrl?: string;
   isFavorite?: boolean;
-  imgSize?: {
-    width: string;
-    height: string;
-  };
+  // imgSize?: {
+  //   width: string;
+  //   height: string;
+  // };
 }
 
 const RoomCard: React.FC<RoomCardProps> = ({
@@ -26,7 +25,6 @@ const RoomCard: React.FC<RoomCardProps> = ({
   location,
   rating,
   price,
-  imgSize,
   // imageUrl,
   isFavorite = false,
   saved,
@@ -46,16 +44,13 @@ const RoomCard: React.FC<RoomCardProps> = ({
       className="group cursor-pointer shadow-none hover:shadow-lg p-2 rounded-[20px] transition-shadow duration-300 overflow-hidden"
     >
       <div className="relative">
-        <div
-          className={`relative rounded-[20px] ${
-            imgSize?.height ? imgSize.height : "h-[175px]"
-          } ${imgSize?.width ? imgSize.width : "w-[260px]"} overflow-hidden`}
-        >
+        <div className={`relative rounded-[20px] overflow-hidden`}>
           <Image
             src={img}
             alt={title}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            width={700}
+            height={475}
+            className="w-full h-auto group-hover:scale-105"
           />
           {hoveredId === id && (
             <Button

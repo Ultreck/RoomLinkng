@@ -18,6 +18,8 @@ const formSchema = z.object({
     .min(6, { message: "Password must be at least 6 character long." }),
   rememberMe: z.boolean().optional(),
 });
+
+export type LoginFormValues = z.infer<typeof formSchema>;
 const LoginFrom = () => {
   const [passType, setPassType] = useState<"text" | "password">("password");
   const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +32,7 @@ const LoginFrom = () => {
       rememberMe: false,
     },
   });
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: LoginFormValues) => {
     console.log(data);
     setIsLoading(true);
     setTimeout(() => {
@@ -60,14 +62,14 @@ const LoginFrom = () => {
                 </a>
               </p>
             </div>
-            <CustomInput
+            <CustomInput<LoginFormValues>
               type={"text"}
               name="email"
               label="Email address"
               placeholder="you@example.com"
               form={formHook}
             />
-            <CustomInput
+            <CustomInput<LoginFormValues>
               type={passType}
               name="password"
               label="Password"

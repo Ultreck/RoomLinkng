@@ -28,7 +28,7 @@ const ForgotPasswordEmail = ({handleNext}: handleNexttype) => {
       email: "",
     },
   });
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: z.infer<typeof formSchema>) => {
     console.log(data);
     setIsLoading(true);
     setTimeout(() => {

@@ -20,7 +20,7 @@ interface RoomSectionProps {
 
 const RoomSection: React.FC<RoomSectionProps> = ({ title, rooms, nums }) => {
   return (
-    <div className="mb-5">
+    <div className="mb-5 w-full border">
       {/* Section Header */}
       <div className="flex items-center justify-between mb-3">
         <h2 className="text-xl font-semibold text-gray-900 flex items-center">
@@ -30,7 +30,7 @@ const RoomSection: React.FC<RoomSectionProps> = ({ title, rooms, nums }) => {
       </div>
 
       {/* Room Cards Grid */}
-      <div className={`grid grid-cols-1 md:grid-cols-2 ${nums === 5? "lg:grid-cols-5" : "lg:grid-cols-3"}  gap-6`}>
+      <div className={`grid w-full grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5  lg:gap-6`}>
         {rooms?.slice(0, nums)?.map((room) => (
           <RoomCard
             key={room.id}

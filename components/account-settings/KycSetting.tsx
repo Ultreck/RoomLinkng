@@ -51,7 +51,7 @@ const KycSetting = () => {
                       <p>Drop the files here ...</p>
                     ) : (
                       <p className={`${files[0] && "hidden"}`}>
-                        Drag 'n' drop some files here, or click to select files
+                        Drag &apos;n&apos; drop some files here, or click to select files
                       </p>
                     )}
                     {files[0] && (
@@ -92,7 +92,7 @@ const KycSetting = () => {
                       <p>Drop the files here ...</p>
                     ) : (
                       <p className={`${files[1] && "hidden"}`}>
-                        Drag 'n' drop some files here, or click to <span className="text italic">upload your bank statement (from 3months ago)</span>
+                        Drag &apos;n&apos; drop some files here, or click to <span className="text italic">upload your bank statement (from 3months ago)</span>
                       </p>
                     )}
                     {files[1] && (

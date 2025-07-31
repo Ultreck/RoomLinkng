@@ -5,15 +5,16 @@ import renterIcon from "../../assets/icons/renter-icon.svg";
 import landlordIcon from "../../assets/icons/landlord-icon.svg";
 import Image from "next/image";
 import useParamHook from "@/hooks/use-param-hook";
-import { FormValues } from "@/app/register/page";
+import { UseFormReturn } from "react-hook-form";
+import { SignUpFormValues } from "../RegistrationPageClient";
 
 type AccountSelectionProps = {
   handleNext: () => void;
-  form: any;
+  form: UseFormReturn<SignUpFormValues>;
 };
 
 export default function AccountSelection({handleNext, form}: AccountSelectionProps) {
-  const [selected, setSelected] = useState<"landlord" | "renter" | null>(
+  const [selected, setSelected] = useState<"landlord" | "renter">(
     "landlord"
   );
 const {handleSearchParams} = useParamHook();

@@ -15,6 +15,7 @@ const formSchema = z.object({
   newPassword: z.string().min(6, { message: "" }),
 });
 
+export type ResetPasswordForm = z.infer<typeof formSchema>;
 type handleNextProp = {
     handleNext: () => void;
 }
@@ -30,7 +31,7 @@ const NewPassword = ({handleNext}: handleNextProp) => {
     },
   });
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: z.infer<typeof formSchema>) => {
     setIsLoading(true);
     console.log(data);
     setTimeout(() => {

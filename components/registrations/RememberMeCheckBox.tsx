@@ -2,12 +2,13 @@ import React from 'react';
 import { Label } from '../ui/label';
 import { Checkbox } from '../ui/checkbox';
 import { UseFormReturn } from 'react-hook-form';
+import { LoginFormValues } from './LoginFrom';
 
 type RememberMeCheckBoxProps = {
   id: string;
   label?: string;
-  form: UseFormReturn<any>;
-  name: string;
+  form: UseFormReturn<LoginFormValues>;
+  name: keyof LoginFormValues;
 };
 
 const RememberMeCheckBox = ({ id, form, name, label = 'Remember me' }: RememberMeCheckBoxProps) => {

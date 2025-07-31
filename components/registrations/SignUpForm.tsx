@@ -6,11 +6,12 @@ import CustomInput from "./CustomInput";
 import { Button } from "../ui/button";
 import { Loader } from 'lucide-react';
 import useParamHook from "@/hooks/use-param-hook";
-import { FormValues } from "@/app/register/page";
+import { UseFormReturn } from "react-hook-form";
+import { SignUpFormValues } from "../RegistrationPageClient";
 
 
 type SignUpFormProps = {
-  form: any;
+  form: UseFormReturn<SignUpFormValues>;
   handleNext: () => void;
 };
 const SignUpForm = ({ form }: SignUpFormProps) => {
@@ -19,7 +20,7 @@ const SignUpForm = ({ form }: SignUpFormProps) => {
 const {handleSearchParams} = useParamHook();
 
   
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: SignUpFormValues) => {
     setIsLoading(true);
     console.log(data);
     setTimeout(() => {
@@ -47,28 +48,28 @@ const {handleSearchParams} = useParamHook();
                 </a>
               </p>
             </div>
-            <CustomInput
+            <CustomInput<SignUpFormValues>
               type={"text"}
               name="fullName"
               label="Full name"
               placeholder="e.g John Doe"
               form={form}
             />
-            <CustomInput
+            <CustomInput<SignUpFormValues>
               type={"text"}
               name="email"
               label="Email address"
               placeholder="you@example.com"
               form={form}
             />
-            <CustomInput
+            <CustomInput<SignUpFormValues>
               type={"text"}
               name="phoneNumber"
               label="Phone number"
               placeholder="e.g +234 123 4567"
               form={form}
             />
-            <CustomInput
+            <CustomInput<SignUpFormValues>
               type={passType}
               name="password"
               label="Password"

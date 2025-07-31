@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import OtpScreen from "./registrations/OtpScreen";
 import NewPassword from "./registrations/NewPassword";
 import SuccessPage from "./registrations/SuccessPage";
@@ -69,12 +69,24 @@ const ForgottenPassword = () => {
           exit="exit"
         >
           {currentIndex === 0 && (
-            <ForgotPasswordEmail handleNext={handleNext} />
+            <Suspense fallback={<div>Loading...</div>}>
+              <ForgotPasswordEmail handleNext={handleNext} />
+            </Suspense>
           )}
-          {currentIndex === 1 && <OtpScreen handleNext={handleNext} />}
-          {currentIndex === 2 && <NewPassword handleNext={handleNext} />}
+          {currentIndex === 1 && (
+            <Suspense fallback={<div>Loading...</div>}>
+              <OtpScreen handleNext={handleNext} />
+            </Suspense>
+          )}
+          {currentIndex === 2 && (
+            <Suspense fallback={<div>Loading...</div>}>
+              <NewPassword handleNext={handleNext} />
+            </Suspense>
+          )}
           {currentIndex === 3 && (
-            <SuccessPage title={"Your password has been reset!"} />
+            <Suspense fallback={<div>Loading...</div>}>
+              <SuccessPage title={"Your password has been reset!"} />
+            </Suspense>
           )}
         </motion.div>
       </AnimatePresence>

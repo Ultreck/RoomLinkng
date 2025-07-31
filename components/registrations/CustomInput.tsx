@@ -11,13 +11,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { Eye } from "lucide-react";
 import { EyeOff } from "lucide-react";
+import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 
-type DynamicInputProps = {
+type DynamicInputProps<T extends FieldValues> = {
   type: "text" | "email" | "password" | "number" | "textarea" | "file";
   label: string;
-  name: string;
+  name: Path<T>;
   placeholder?: string;
-  form: any;
+  form: UseFormReturn<T>;
   description?: string;
   setType?: (type: "text" | "password") => void;
   isPassword?: boolean;
@@ -26,7 +27,7 @@ type DynamicInputProps = {
   disabled?: boolean;
   lableStyle?: string;
 };
-const CustomInput = ({
+const CustomInput = <T extends FieldValues>({
   type,
   label,
   name,
@@ -39,7 +40,7 @@ const CustomInput = ({
   className,
   disabled = false,
   lableStyle
-}: DynamicInputProps) => {
+}: DynamicInputProps<T>) => {
   return (
     <FormField
       control={form.control}
