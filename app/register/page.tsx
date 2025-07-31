@@ -1,12 +1,11 @@
 "use client";
 
 import AccountSelection from "@/components/registrations/AccountSelection";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "framer-motion";
-import { Form } from "@/components/ui/form";
 import SignUpForm from "@/components/registrations/SignUpForm";
 import LoginFrom from "@/components/registrations/LoginFrom";
 import SuccessPage from "@/components/registrations/SuccessPage";
@@ -27,6 +26,9 @@ const formSchema = z.object({
   fullName: z.string().min(3, { message: "Full name is required" }),
   rememberMe: z.boolean().optional(),
 });
+
+export type FormValues = z.infer<typeof formSchema>;
+
 const RegistrationPage = () => {
   const { mode } = useParamHook();
 
@@ -50,11 +52,6 @@ const RegistrationPage = () => {
     setCurrentIndex((prev) => prev + 1);
     console.log(form.getValues());
   };
-
-  // const handlePrev = () => {
-  //   setDirection(-1);
-  //   setCurrentIndex((prev) => prev - 1);
-  // };
 
   const slideVariants = {
     initial: (direction: number) => ({

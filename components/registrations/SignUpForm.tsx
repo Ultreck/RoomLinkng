@@ -1,17 +1,19 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Form } from "../ui/form";
 import CustomInput from "./CustomInput";
 import { Button } from "../ui/button";
 import { Loader } from 'lucide-react';
 import useParamHook from "@/hooks/use-param-hook";
+import { FormValues } from "@/app/register/page";
+
 
 type SignUpFormProps = {
   form: any;
   handleNext: () => void;
 };
-const SignUpForm = ({ form, handleNext }: SignUpFormProps) => {
+const SignUpForm = ({ form }: SignUpFormProps) => {
   const [passType, setPassType] = useState<"text" | "password">("password");
   const [isLoading, setIsLoading] = useState(false);
 const {handleSearchParams} = useParamHook();
@@ -23,7 +25,6 @@ const {handleSearchParams} = useParamHook();
     setTimeout(() => {
       setIsLoading(false);
       handleSearchParams('login');
-      // handleNext();
 
     }, 5000)
   };

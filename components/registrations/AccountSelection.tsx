@@ -5,6 +5,7 @@ import renterIcon from "../../assets/icons/renter-icon.svg";
 import landlordIcon from "../../assets/icons/landlord-icon.svg";
 import Image from "next/image";
 import useParamHook from "@/hooks/use-param-hook";
+import { FormValues } from "@/app/register/page";
 
 type AccountSelectionProps = {
   handleNext: () => void;
