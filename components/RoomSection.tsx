@@ -20,7 +20,7 @@ interface RoomSectionProps {
 
 const RoomSection: React.FC<RoomSectionProps> = ({ title, rooms, nums }) => {
   return (
-    <div className="mb-5 w-full border">
+    <div className="mb-5 w-full">
       {/* Section Header */}
       <div className="flex items-center justify-between mb-3">
         <h2 className="text-xl font-semibold text-gray-900 flex items-center">

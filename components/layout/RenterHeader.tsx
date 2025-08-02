@@ -7,7 +7,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-// import { Mail } from "lucide-react";
 import img from "../../assets/images/profile.png";
 import Image from "next/image";
 import envelop from "../../assets/icons/envelop.svg";
@@ -88,14 +87,13 @@ const RenterHeader = () => {
         {/* Right side - Message icon and User profile */}
         <div className="flex items-center space-x-4">
           {/* Message Icon */}
-          <Button
-            variant="ghost"
-            size="icon"
+          <Link
+            href="/renter/message"
             className="text-gray-600 hover:text-gray-900"
           >
             {/* <Mail className="h-5 w-5" /> */}
             <Image src={envelop} alt="envelop icon" />
-          </Button>
+          </Link>
 
           {/* User Profile */}
           <DropdownMenu>

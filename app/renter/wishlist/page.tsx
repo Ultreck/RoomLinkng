@@ -12,7 +12,6 @@ const WishlistPage = () => {
             title={room.title}
             saved={room.saved}
             isFavorite={room.isFavorite}
-            imgSize={{ width: "w-full", height: "h-full" }}
           />
         ))}
       </div>

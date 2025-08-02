@@ -1,9 +1,14 @@
 import { useRouter, useSearchParams } from "next/navigation";
 
-const useParamHook = () => {
+type ModeProp = {
+  modeParam?: string; // Make it optional
+};
+
+const useParamHook = ({ modeParam = "mode" }: ModeProp = {}) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const mode = searchParams.get("mode");
+
+  const mode = searchParams.get(modeParam);
 
   const handleSearchParams = (param: string, key: string = "mode") => {
     router.push(`?${key}=${param}`);
@@ -12,6 +17,7 @@ const useParamHook = () => {
   const removeQueryParams = (base: string) => {
     router.push(`/${base}`);
   };
+
   return {
     router,
     searchParams,
@@ -20,5 +26,6 @@ const useParamHook = () => {
     handleSearchParams,
   };
 };
+
 
 export default useParamHook;

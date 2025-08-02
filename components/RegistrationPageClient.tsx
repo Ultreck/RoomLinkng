@@ -12,6 +12,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "framer-motion";
 import useParamHook from "@/hooks/use-param-hook";
+import { slideVariants } from "@/lib/helper";
 
 const formSchema = z.object({
   email: z.string().regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Invalid email format"),
@@ -46,23 +47,6 @@ const RegistrationPageClient = () => {
     setDirection(1);
     setCurrentIndex((prev) => prev + 1);
     console.log(form.getValues());
-  };
-
-  const slideVariants = {
-    initial: (direction: number) => ({
-      x: direction > 0 ? 300 : -300,
-      opacity: 0,
-    }),
-    animate: {
-      x: 0,
-      opacity: 1,
-      transition: { duration: 0.5 },
-    },
-    exit: (direction: number) => ({
-      x: direction > 0 ? -300 : 300,
-      opacity: 0,
-      transition: { duration: 0.5 },
-    }),
   };
 
   return (

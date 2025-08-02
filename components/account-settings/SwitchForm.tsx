@@ -16,16 +16,16 @@ import {
 import { Switch } from "@/components/ui/switch";
 
 const FormSchema = z.object({
-  marketing_emails: z.boolean().default(false).optional(),
-  security_emails: z.boolean(),
+  activity_permission: z.boolean().default(false).optional(),
+  data_permission: z.boolean(),
 });
 
 export function SwitchForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      marketing_emails: false,
-      security_emails: false,
+      activity_permission: false,
+      data_permission: false,
     },
   });
 
@@ -46,7 +46,7 @@ export function SwitchForm() {
           <div className="space-y-4">
             <FormField
               control={form.control}
-              name="marketing_emails"
+              name="activity_permission"
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
                   <div className="space-y-0.5">
@@ -60,7 +60,7 @@ export function SwitchForm() {
                     <Switch
                       checked={field.value}
                       onCheckedChange={(checked) => {
-                        form.setValue("marketing_emails", checked, {
+                        form.setValue("activity_permission", checked, {
                           shouldDirty: true,
                           shouldValidate: true,
                         });
@@ -73,7 +73,7 @@ export function SwitchForm() {
             />
             <FormField
               control={form.control}
-              name="security_emails"
+              name="data_permission"
               render={({ field }) => (
                 <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
                   <div className="space-y-0.5">
@@ -86,7 +86,7 @@ export function SwitchForm() {
                     <Switch
                       checked={field.value}
                       onCheckedChange={(checked) => {
-                        form.setValue("security_emails", checked, {
+                        form.setValue("data_permission", checked, {
                           shouldDirty: true,
                           shouldValidate: true,
                         });

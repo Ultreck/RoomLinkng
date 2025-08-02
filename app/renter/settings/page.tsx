@@ -126,7 +126,7 @@ function AccountSettingsPage() {
                   <button
                     key={item.id}
                     onClick={() => setActiveTab(item.id)}
-                    className={`sm:w-48 flex items-center sm:space-x-3 px-3 sm:py-2 py-1 rounded-full text-left transition-all duration-200 ${
+                    className={`sm:w-48 flex cursor-pointer hover:bg-gray-50 items-center sm:space-x-3 px-3 sm:py-2 py-1 rounded-full text-left transition-all duration-200 ${
                       activeTab === item.id ? "bg-[#F6F6F6] font-semibold" : ""
                     }`}
                   >

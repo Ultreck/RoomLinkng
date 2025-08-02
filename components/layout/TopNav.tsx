@@ -1,5 +1,5 @@
 import Image from "next/image"
-
+import img from "../../assets/images/profile.png"
 const TopNav = () => {
   return (
     <div className="flex justify-between w-full border rounded-lg mx-auto items-center p-4 bg-gray-50 border-b">
@@ -15,7 +15,7 @@ const TopNav = () => {
           </svg>
         </div>
         <div className="flex items-center gap-2">
-          <Image src="/assets/avatar.png" width={35} height={35} className="rounded-full" alt="User" />
+          <Image src={img} width={35} height={35} className="rounded-full" alt="User" />
           <div>
             <p className="text-sm font-semibold">Gladys Adediji</p>
             <p className="text-xs text-gray-500">gladyssade10@gmail.com</p>
