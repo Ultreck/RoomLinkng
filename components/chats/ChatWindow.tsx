@@ -14,7 +14,7 @@ type ChatWindowProp = {
 export default function ChatWindow({user}: ChatWindowProp) {
   
 
-  let isTyping = true;
+  const isTyping = true;
   return (
     <div
       style={{ backgroundImage: `url(${bgImg.src})` }}
