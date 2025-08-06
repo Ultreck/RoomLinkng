@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { ibadanRooms, lagosRooms } from "@/lib/helper";
 import React, { useState } from "react";
@@ -6,15 +6,25 @@ import RoomCard from "../RoomCard";
 import ListingHeader from "./ListingHeader";
 
 const ListingMainPage = () => {
-      const [isSearched, setIsSearched] = useState<boolean>(false);
-    
+  const [_isSearched, setIsSearched] = useState<boolean>(false);
+
   return (
     <div>
-      <div className="mb-5 w-full">
-        <ListingHeader setIsSearched={setIsSearched}  />
+      <div className="mb-5 w-full mt-10">
+        <div className="text flex  justify-between items-center mb-3">
+          <h1 className="text-[#474747] text-xl font-bold">
+            My Listings{" "}
+            <span className="text-sm font-normal">
+             ( {[, , , , , , , , , , , , , , , , , , , , , , , , , , ,].length} results)
+            </span>{" "}
+          </h1>
+          <div className="text w-3/5">
+            <ListingHeader setIsSearched={setIsSearched} />
+          </div>
+        </div>
         {/* Room Cards Grid */}
         <div
-          className={`grid w-full grid-cols-1 sm:grid-cols-3 md:grid-cols-4  lg:gap-6`}
+          className={`grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4  lg:gap-6`}
         >
           {[...lagosRooms, ...ibadanRooms]?.map((room) => (
             <RoomCard

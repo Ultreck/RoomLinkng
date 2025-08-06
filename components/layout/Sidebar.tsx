@@ -13,7 +13,6 @@ import { BookText } from "lucide-react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import logo from "../../assets/images/RoomLinkNG.png";
-import { ChartRadialText } from "../charts/ChartRadialText";
 import CompleteProfileCard from "../CompleteProfileCard";
 
 const Sidebar = () => {
