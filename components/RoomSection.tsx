@@ -1,6 +1,6 @@
-import React from 'react';
-import { ChevronRight } from 'lucide-react';
-import RoomCard from './RoomCard';
+import React from "react";
+import { ChevronRight } from "lucide-react";
+import RoomCard from "./RoomCard";
 
 interface Room {
   id: string;
@@ -30,9 +30,12 @@ const RoomSection: React.FC<RoomSectionProps> = ({ title, rooms, nums }) => {
       </div>
 
       {/* Room Cards Grid */}
-      <div className={`grid w-full grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5  lg:gap-6`}>
+      <div
+        className={`grid w-full grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5  lg:gap-6`}
+      >
         {rooms?.slice(0, nums)?.map((room) => (
           <RoomCard
+            type="renter"
             key={room.id}
             id={room.id}
             title={room.title}
@@ -49,4 +52,3 @@ const RoomSection: React.FC<RoomSectionProps> = ({ title, rooms, nums }) => {
 };
 
 export default RoomSection;
-
