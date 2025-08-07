@@ -16,7 +16,6 @@ import Link from "next/link";
 
 const RenterHeader = () => {
   const pathname = usePathname();
-  console.log(pathname);
 
   return (
     <header className="w-full bg-white px-6 py-2 mt-2">
@@ -24,13 +23,18 @@ const RenterHeader = () => {
         {/* Logo */}
         <div className="flex items-center">
           <h1 className="text-2xl font-bold text-gray-900">
-            <Image
-              src={logo}
-              alt="Logo"
-              width={150}
-              height={150}
-              className="inline-block mr-2"
-            />
+            <Link
+              href="/renter"
+              className="text"
+            >
+              <Image
+                src={logo}
+                alt="Logo"
+                width={150}
+                height={150}
+                className="inline-block mr-2"
+              />
+            </Link>
           </h1>
         </div>
 

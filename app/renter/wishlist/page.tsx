@@ -12,6 +12,7 @@ const WishlistPage = () => {
             id={room.id}
             title={room.title}
             saved={room.saved}
+            imageUrl={room.imageUrl.src}
             isFavorite={room.isFavorite}
           />
         ))}

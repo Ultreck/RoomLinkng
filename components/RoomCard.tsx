@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Heart, Star } from "lucide-react";
-import Image from "next/image";
-import img from "../assets/images/house.png";
+import Image, { StaticImageData } from "next/image";
+// import img from "../assets/images/house.png";
 import { FaPlay } from "react-icons/fa6";
 import { FaPause } from "react-icons/fa6";
 interface RoomCardProps {
@@ -13,7 +13,8 @@ interface RoomCardProps {
   rating?: number;
   price?: string;
   saved?: string;
-  imageUrl?: string;
+  imageUrl: string | StaticImageData;
+  otherImgs?: (string | StaticImageData)[];
   isFavorite?: boolean;
   type: string;
   // imgSize?: {
@@ -28,10 +29,11 @@ const RoomCard: React.FC<RoomCardProps> = ({
   location,
   rating,
   price,
-  // imageUrl,
+  imageUrl,
   isFavorite = false,
   saved,
   type = "renter",
+  // otherImgs
 }) => {
   const [hoveredId, setHoveredId] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
@@ -45,6 +47,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
   const handlePlayAndPause = () => {
     setIsPlaying(!isPlaying);
   };
+  
 
   return (
     <div
@@ -61,7 +64,7 @@ const RoomCard: React.FC<RoomCardProps> = ({
             </div>
           )}
           <Image
-            src={img}
+            src={imageUrl}
             alt={title}
             width={700}
             height={475}

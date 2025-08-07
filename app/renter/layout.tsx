@@ -8,9 +8,9 @@ export default function RenterLayout({
 }) {
   return (
     <section className="flex flex-col h-screen">
-      <header className="">
+      {/* <header className="">
         <RenterHeader />
-      </header>
+      </header> */}
       <div className="flex-1">{children}</div>
     </section>
   );

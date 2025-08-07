@@ -1,6 +1,8 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
 import RoomCard from "./RoomCard";
+import Link from "next/link";
+import { StaticImageData } from "next/image";
 
 interface Room {
   id: string;
@@ -8,8 +10,9 @@ interface Room {
   location: string;
   rating: number;
   price: string;
-  imageUrl: string;
   isFavorite?: boolean;
+  imageUrl: string | StaticImageData;
+  otherImgs: (string | StaticImageData)[];
 }
 
 interface RoomSectionProps {
@@ -31,20 +34,25 @@ const RoomSection: React.FC<RoomSectionProps> = ({ title, rooms, nums }) => {
 
       {/* Room Cards Grid */}
       <div
-        className={`grid w-full grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5  lg:gap-6`}
+        className={`grid w-full grid-cols-1 ${
+          nums === 3 ? "sm:grid-cols-3" : "sm:grid-cols-3 md:grid-cols-5"
+        } `}
       >
         {rooms?.slice(0, nums)?.map((room) => (
-          <RoomCard
-            type="renter"
-            key={room.id}
-            id={room.id}
-            title={room.title}
-            location={room.location}
-            rating={room.rating}
-            price={room.price}
-            imageUrl={room.imageUrl}
-            isFavorite={room.isFavorite}
-          />
+          <Link key={room.id} href={`/renter/${room.title}`}>
+            <RoomCard
+              type="renter"
+              key={room.id}
+              id={room.id}
+              title={room.title}
+              location={room.location}
+              rating={room.rating}
+              price={room.price}
+              otherImgs={room.otherImgs}
+              imageUrl={room.imageUrl}
+              isFavorite={room.isFavorite}
+            />
+          </Link>
         ))}
       </div>
     </div>
