@@ -7,12 +7,14 @@ import DetailsImageGallery from "@/components/property-details/DetailsImageGalle
 import CalendarSection from "@/components/property-details/CalendarSection";
 import { Metadata } from "next";
 import { ibadanRooms, lagosRooms } from "@/lib/helper";
+import { MapPin } from "lucide-react";
+import ShareButtonWithModal from "@/components/property-details/ShareButtonWithModal";
 
 type Props = {
-    params: {
-        slug: string;
-    }
-}
+  params: {
+    slug: string;
+  };
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = await params?.slug;
@@ -20,39 +22,44 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `Listing - ${title}`,
   };
 }
-export default function RenterDetailsPage({params}: Props) {
-    const {slug} = params;
-    const formatedSlug = decodeURIComponent(slug);
-    console.log(slug);
-    console.log(formatedSlug);
-    const foundItem = [...ibadanRooms, ...lagosRooms]?.find((value) => value.title === formatedSlug);
-    console.log(foundItem);
+export default function RenterDetailsPage({ params }: Props) {
+  const { slug } = params;
+  const formatedSlug = decodeURIComponent(slug);
+  const foundItem = [...ibadanRooms, ...lagosRooms]?.find(
+    (value) => value.title === formatedSlug
+  );
 
   return (
-    <main className="max-w-8xl mx-auto px-10 py-6 space-y-6">
-      <div className="text-sm text-muted-foreground mb-2">
-        <a href="#" className="hover:underline">
-          Back
-        </a>{" "}
-        / Listings / Tropic flat villa
+    <main className="">
+      <div className="text-sm text-muted-foreground mb-2"></div>
+      <div className="text flex justify-between items-center mb-7">
+        <div className="text">
+          <h1 className="text-2xl font-semibold">{foundItem?.title}</h1>
+          <p className="text-xl font-bold text-green-700 my-2">
+            {foundItem?.price}
+            <span className="text-sm font-normal text-muted-foreground">
+              /room
+            </span>
+          </p>
+          <p className="text-sm text-muted-foreground flex items-center gap-2">
+            <MapPin size={16} /> {foundItem?.location} • ⭐{foundItem?.rating}
+          </p>
+        </div>
+        <div className="text">
+          <ShareButtonWithModal />
+        </div>
       </div>
 
-      <h1 className="text-2xl font-semibold">{foundItem?.title}</h1>
-      <p className="text-xl font-bold text-green-700">
-        {foundItem?.price}
-        <span className="text-sm font-normal text-muted-foreground">/room</span>
-      </p>
-      <p className="text-sm text-muted-foreground">
-        📍 12, softun rd, lekki lagos • ⭐ 4.9
-      </p>
-
-      <DetailsImageGallery />
+      <DetailsImageGallery
+        mainImg={foundItem?.imageUrl?.src ?? ""}
+        imgs={foundItem?.otherImgs ?? []}
+      />
 
       <div className="grid md:grid-cols-3 gap-6 mt-6">
         <div className="md:col-span-2 space-y-6">
           <DetailsLandlordCard />
           <DetailsTabs />
-          <CalendarSection />
+          {/* <CalendarSection /> */}
         </div>
 
         <DetailsPriceCard />
