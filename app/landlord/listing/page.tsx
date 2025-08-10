@@ -1,12 +1,14 @@
 import TopNav from "@/components/layout/TopNav";
 import ListingMainPage from "@/components/listings/ListingMainPage";
-import React from "react";
+import React, { Suspense } from "react";
 
 const ListingPage = () => {
   return (
     <div className="">
-      <TopNav />
-     <ListingMainPage/>
+      <Suspense fallback={null}>
+        <TopNav />
+        <ListingMainPage />
+      </Suspense>
     </div>
   );
 };

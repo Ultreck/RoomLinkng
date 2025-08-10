@@ -8,20 +8,20 @@ import { ibadanRooms, lagosRooms } from "@/lib/helper";
 import { MapPin } from "lucide-react";
 import ShareButtonWithModal from "@/components/property-details/ShareButtonWithModal";
 
-type Props = {
-  params: {
-    slug: string;
-  };
-};
-
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const title = await params?.slug;
-  return {
-    title: `Listing - ${title}`,
-  };
+interface PageProps {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
-export default function RenterDetailsPage({ params }: Props) {
-  const { slug } = params;
+
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params
+
+  return {
+    title: `Renter - ${slug}`,
+  }
+}
+export default async function RenterDetailsPage({ params }: PageProps) {
+  const { slug } = await params
   const formatedSlug = decodeURIComponent(slug);
   const foundItem = [...ibadanRooms, ...lagosRooms]?.find(
     (value) => value.title === formatedSlug

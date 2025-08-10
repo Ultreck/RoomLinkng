@@ -1,4 +1,5 @@
 import ChatMainPage from "@/components/chats/ChatMainPage";
+import { Suspense } from "react";
 
 
 
@@ -6,8 +7,9 @@ export default function MessagesPage() {
 
 
   return (
-    <div >
+    <Suspense fallback={null} >
+
       <ChatMainPage/>
-    </div>
+    </Suspense>
   );
 }
