@@ -111,7 +111,7 @@ function AccountSettingsPage() {
   };
 
   return (
-    <div className="min-h-screen mt-16 bg-white">
+    <div className="min-h-screen mt-10 bg-white">
       <div className="md:flex md:max-w-[70%] mx-auto sm:p-5">
         {/* Sidebar */}
         <div className="bg-white px-5 md:border-r md:min-h-screen">

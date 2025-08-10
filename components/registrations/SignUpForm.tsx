@@ -43,7 +43,7 @@ const {handleSearchParams} = useParamHook();
               </h2>
               <p className="text-sm font-medium text-[#212121] mb-4">
                 Welcome to RoomLink. Please enter your details. Have an account?
-                <a href="#" className="text-green-700 mx-0.5 font-bold">
+                <a  onClick={() => handleSearchParams("login")} href="#" className="text-green-700 mx-0.5 font-bold">
                   Login
                 </a>
               </p>

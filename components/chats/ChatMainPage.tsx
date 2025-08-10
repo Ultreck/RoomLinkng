@@ -12,7 +12,7 @@ import { slideVariants, users } from "@/lib/helper";
 
 const ChatMainPage = () => {
   const [isAbout, setIsAbout] = useState<boolean>(false);
-  const { mode } = useParamHook({ modeParam: "chatId" });
+  const { mode } = useParamHook({ key: "chatId" });
   const [user, setUser] = useState<ChatUersProps>();
   useEffect(() => {
     setUser(users.find((value) => value.id === mode));

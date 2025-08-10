@@ -2,7 +2,9 @@ import { SettingFormValues } from "@/app/renter/settings/page";
 import testy1 from "../assets/images/testy-image1.png";
 import testy2 from "../assets/images/testy-immage2.png";
 // import testy3 from '../assets/images/profile.png'
-
+import imgMain from '../assets/images/house.png';
+import img1 from '../assets/images/pic-one.png'; 
+import img2 from '../assets/images/pic-two.png';
 type EndDate = {
   value: string;
   label: string;
@@ -15,12 +17,13 @@ type Testimonies = {
   role: string;
 };
 
-type WishListItemsProps = {
-  id: string;
-  title: string;
-  saved: string;
-  isFavorite: boolean;
-};
+// type WishListItemsProps = {
+//   id: string;
+//   title: string;
+//   saved: string;
+//   isFavorite: boolean;
+//   imageUrl: string,
+// };
 
 type ChatPreviewProp = {
   me: string;
@@ -97,47 +100,52 @@ export const testimonies: Testimonies[] = [
 export const ibadanRooms = [
   {
     id: "1",
-    title: "Tropic flat villa",
+    title: "Tropic flat villa01",
     location: "Elebu Ibadan",
     rating: 4.9,
     price: "N30K",
-    imageUrl: "/api/placeholder/300/200",
+    imageUrl: imgMain,
+    otherImgs:[img1, img2, img2, img1, img1, img2, img2, img1],
     isFavorite: false,
   },
   {
     id: "2",
-    title: "Tropic flat villa",
+    title: "Tropic flat villa02",
     location: "Elebu Ibadan",
     rating: 4.9,
     price: "N30K",
-    imageUrl: "/api/placeholder/300/200",
+    imageUrl: imgMain,
+    otherImgs:[img1, img2, img2, img1, img1, img2, img2, img1],
     isFavorite: true,
   },
   {
     id: "3",
-    title: "Tropic flat villa",
+    title: "Tropic flat villa03",
     location: "Elebu Ibadan",
     rating: 4.9,
     price: "N30K",
-    imageUrl: "/api/placeholder/300/200",
+    imageUrl: imgMain,
+    otherImgs:[img1, img2, img2, img1, img1, img2, img2, img1],
     isFavorite: false,
   },
   {
     id: "4",
-    title: "Tropic flat villa",
+    title: "Tropic flat villa04",
     location: "Elebu Ibadan",
     rating: 4.9,
     price: "N30K",
-    imageUrl: "/api/placeholder/300/200",
+    imageUrl: imgMain,
+    otherImgs:[img1, img2, img2, img1, img1, img2, img2, img1],
     isFavorite: true,
   },
   {
     id: "5",
-    title: "Tropic flat villa",
+    title: "Tropic flat villa05",
     location: "Elebu Ibadan",
     rating: 4.9,
     price: "N30K",
-    imageUrl: "/api/placeholder/300/200",
+    imageUrl: imgMain,
+    otherImgs:[img1, img2, img2, img1, img1, img2, img2, img1],
     isFavorite: false,
   },
 ];
@@ -145,74 +153,83 @@ export const ibadanRooms = [
 export const lagosRooms = [
   {
     id: "6",
-    title: "Tropic flat villa",
+    title: "Tropic flat villa06",
     location: "Lekki Lagos",
     rating: 4.9,
     price: "N30K",
-    imageUrl: "/api/placeholder/300/200",
+    imageUrl: imgMain,
+    otherImgs:[img1, img2, img2, img1, img1, img2, img2, img1],
     isFavorite: true,
   },
   {
     id: "7",
-    title: "Tropic flat villa",
+    title: "Tropic flat villa07",
     location: "Elebu Ibadan",
     rating: 4.9,
     price: "N30K",
-    imageUrl: "/api/placeholder/300/200",
+    imageUrl: imgMain,
+    otherImgs:[img1, img2, img2, img1, img1, img2, img2, img1],
     isFavorite: false,
   },
   {
     id: "8",
-    title: "Tropic flat villa",
+    title: "Tropic flat villa08",
     location: "Elebu Ibadan",
     rating: 4.9,
     price: "N30K",
-    imageUrl: "/api/placeholder/300/200",
+    imageUrl: imgMain,
+    otherImgs:[img1, img2, img2, img1, img1, img2, img2, img1],
     isFavorite: true,
   },
   {
     id: "9",
-    title: "Tropic flat villa",
+    title: "Tropic flat villa09",
     location: "Elebu Ibadan",
     rating: 4.9,
     price: "N30K",
-    imageUrl: "/api/placeholder/300/200",
+    imageUrl: imgMain,
+    otherImgs:[img1, img2, img2, img1, img1, img2, img2, img1],
     isFavorite: true,
   },
   {
     id: "10",
-    title: "Tropic flat villa",
+    title: "Tropic flat villa10",
     location: "Elebu Ibadan",
     rating: 4.9,
     price: "N30K",
-    imageUrl: "/api/placeholder/300/200",
+    imageUrl: imgMain,
+    otherImgs:[img1, img2, img2, img1, img1, img2, img2, img1],
     isFavorite: false,
   },
 ];
 
-export const whishListItems: WishListItemsProps[] = [
+export const whishListItems = [
   {
     id: "1",
     title: "For vacation",
     saved: "2 saved",
+    imageUrl: imgMain,
     isFavorite: true,
   },
   {
     id: "2",
     title: "For festival",
     saved: "5 saved",
+    imageUrl: imgMain,
     isFavorite: true,
   },
   {
     id: "3",
     title: "For break",
     saved: "7 saved",
+    imageUrl: imgMain,
     isFavorite: true,
   },
   {
     id: "4",
     title: "For residence",
     saved: "7 saved",
+    imageUrl: imgMain,
     isFavorite: true,
   },
 ];

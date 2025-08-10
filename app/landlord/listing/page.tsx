@@ -1,9 +1,16 @@
-import React from 'react'
+import TopNav from "@/components/layout/TopNav";
+import ListingMainPage from "@/components/listings/ListingMainPage";
+import React, { Suspense } from "react";
 
 const ListingPage = () => {
   return (
-    <div>ListingPage</div>
-  )
-}
+    <div className="">
+      <Suspense fallback={null}>
+        <TopNav />
+        <ListingMainPage />
+      </Suspense>
+    </div>
+  );
+};
 
-export default ListingPage
+export default ListingPage;
