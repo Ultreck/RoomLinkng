@@ -10,14 +10,18 @@ import {
 } from "../ui/select";
 import { MapPin } from "lucide-react";
 import { MdMeetingRoom } from "react-icons/md";
+import useParamHook from "@/hooks/use-param-hook";
 
-type PropertyTypeSelectProps = {
-  setIsSearched: (value: boolean) => void;
-};
-const PropertyTypeSelect = ({ setIsSearched }: PropertyTypeSelectProps) => {
+
+const PropertyTypeSelect = () => {
+  const { handleFilterParams } = useParamHook();
   return (
-    <div className="flex text-gray-800 items-center space-x-2 px-8 min-w-10">
-      <Select onValueChange={() => setIsSearched(true)}>
+    <div className="flex text-gray-800 items-center space-x-2 lg:px-8 px-3 min-w-10">
+      <Select
+        onValueChange={(value) => {
+          handleFilterParams(value, "property-type");
+        }}
+      >
         <SelectTrigger className="border-none text-gray-800 shadow-none p-0 h-auto focus:ring-0">
           <SelectValue
             placeholder={

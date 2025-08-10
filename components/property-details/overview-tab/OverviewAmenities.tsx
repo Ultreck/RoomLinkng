@@ -1,5 +1,4 @@
-import { BedDouble, Table, Bath, Wind, Tv, Wifi } from "lucide-react";
-// import { FaCarpet } from "react-icons/fa6";
+
 import bed from "../../../assets/icons/bathroom-icon.svg";
 import table from "../../../assets/icons/table-icon.svg";
 import bathroom from "../../../assets/icons/bathroom-icon.svg";

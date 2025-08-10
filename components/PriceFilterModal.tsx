@@ -15,19 +15,33 @@ import { TabsContent } from "@radix-ui/react-tabs";
 import Counter from "./Counter";
 import { Label } from "./ui/label";
 import Image from "next/image";
-import envelop from "../assets/icons/envelop.svg"
+import envelop from "../assets/icons/envelop.svg";
+import useParamHook from "@/hooks/use-param-hook";
 
 export function PriceFilterModal({ children }: { children: React.ReactNode }) {
-  const [priceRange, setPriceRange] = useState<[number, number]>([30, 300]);
-  const [bedrooms, setBedrooms] = useState<number | null>(null);
-  const [beds, setBeds] = useState<number | null>(null);
-  const [bathrooms, setBathrooms] = useState<number | null>(null);
-  const [amenitiesId, setAmenitiesId] = useState<string | undefined>("");
+  const { handleFilterParams, handleGetFilterParams, removeQueryParams } =
+    useParamHook();
+  const [priceRange, setPriceRange] = useState<[number, number]>([
+    Number(handleGetFilterParams("min-price")) || 30,
+    Number(handleGetFilterParams("max-price")) || 300,
+  ]);
+  const [bedrooms, setBedrooms] = useState<number | null>(
+    Number(handleGetFilterParams("bedroom")) || null
+  );
+  const [beds, setBeds] = useState<number | null>(
+    Number(handleGetFilterParams("beds")) || null
+  );
+  const [bathrooms, setBathrooms] = useState<number | null>(
+    Number(handleGetFilterParams("bathrooms")) || null
+  );
+  const [amenitiesId, setAmenitiesId] = useState<string | undefined>(
+    handleGetFilterParams("amenity") || ""
+  );
 
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="rounded-3xl w-[90vw] max-w-[600px] md:max-w-[600px] px-6 py-8">
+      <DialogContent className="rounded-3xl w-[90vw] max-w-2xl md:max-w-2xl px-6 py-8">
         <DialogTitle className="text-lg font-semibold">Filter</DialogTitle>
 
         <Tabs defaultValue="price" className="mt-4 w-full">
@@ -61,7 +75,11 @@ export function PriceFilterModal({ children }: { children: React.ReactNode }) {
                 max={300}
                 step={10}
                 value={priceRange}
-                onValueChange={(value) => setPriceRange([value[0], value[1]])}
+                onValueChange={(value) => {
+                  setPriceRange([value[0], value[1]]);
+                  handleFilterParams(value[0].toLocaleString(), "min-price");
+                  handleFilterParams(value[1].toLocaleString(), "max-price");
+                }}
               >
                 <Slider.Track className="relative h-2 w-full grow rounded-full bg-muted" />
                 <Slider.Range className="absolute h-2 rounded-full bg-green-600" />
@@ -85,6 +103,7 @@ export function PriceFilterModal({ children }: { children: React.ReactNode }) {
                 <Button
                   variant="ghost"
                   className="text-sm  text-muted-foreground"
+                  onClick={() => removeQueryParams("renter")}
                 >
                   Reset
                 </Button>
@@ -96,56 +115,105 @@ export function PriceFilterModal({ children }: { children: React.ReactNode }) {
           </TabsContent>
           <TabsContent value="rooms">
             <div className="text">
-                 <h1 className="text-xl font-bold text-gray-600">Rooms and beds</h1>
+              <h1 className="text-xl font-bold text-gray-600">
+                Rooms and beds
+              </h1>
               <Counter
                 label="Bedrooms"
                 value={bedrooms}
-                onIncrement={() => setBedrooms((prev) => (prev ?? 0) + 1)}
-                onDecrement={() =>
+                onIncrement={() => {
+                  setBedrooms((prev) => (prev ?? 0) + 1);
+                  handleFilterParams(
+                    bedrooms !== null
+                      ? (bedrooms + 1).toString()
+                      : (0 + 1).toString(),
+                    "bedroom"
+                  );
+                }}
+                onDecrement={() => {
                   setBedrooms((prev) =>
                     (prev ?? 0) > 0 ? (prev ?? 0) - 1 : null
-                  )
-                }
+                  );
+                  handleFilterParams(
+                    bedrooms !== null
+                      ? (bedrooms - 1).toString()
+                      : (0 + 1).toString(),
+                    "bedroom"
+                  );
+                }}
               />
               <Counter
                 label="Beds"
                 value={beds}
-                onIncrement={() => setBeds((prev) => (prev ?? 0) + 1)}
-                onDecrement={() =>
-                  setBeds((prev) => ((prev ?? 0) > 0 ? (prev ?? 0) - 1 : null))
-                }
+                onIncrement={() => {
+                  setBeds((prev) => (prev ?? 0) + 1);
+                  handleFilterParams(
+                    beds !== null ? (beds + 1).toString() : (0 + 1).toString(),
+                    "beds"
+                  );
+                }}
+                onDecrement={() => {
+                  setBeds((prev) => ((prev ?? 0) > 0 ? (prev ?? 0) - 1 : null));
+                  handleFilterParams(
+                    beds !== null ? (beds - 1).toString() : (0 + 1).toString(),
+                    "beds"
+                  );
+                }}
               />
               <Counter
                 label="Bathrooms"
                 value={bathrooms}
-                onIncrement={() => setBathrooms((prev) => (prev ?? 0) + 1)}
-                onDecrement={() =>
+                onIncrement={() => {
+                  setBathrooms((prev) => (prev ?? 0) + 1);
+                  handleFilterParams(
+                    bathrooms !== null
+                      ? (bathrooms + 1).toString()
+                      : (0 + 1).toString(),
+                    "bathrooms"
+                  );
+                }}
+                onDecrement={() => {
                   setBathrooms((prev) =>
                     (prev ?? 0) > 0 ? (prev ?? 0) - 1 : null
-                  )
-                }
+                  );
+                  handleFilterParams(
+                    bathrooms !== null
+                      ? (bathrooms - 1).toString()
+                      : (0 + 1).toString(),
+                    "bathrooms"
+                  );
+                }}
               />
             </div>
           </TabsContent>
           <TabsContent value="amenities">
             <div>
-          <h3 className="font-normal mb-2">Amenities</h3>
-          <div className="grid text-sm grid-cols-4 gap-4">
-            {[
-              { id: 'table', label: 'Table' },
-              { id: 'wifi', label: 'WiFi' },
-              { id: 'carpet', label: 'Carpet/Rug' },
-              { id: 'tv', label: 'TV' },
-              { id: 'ac', label: 'AC/Fan' },
-              { id: 'bus', label: 'Bus Station' },
-            ].map((amenity) => (
-              <div onMouseEnter={() => setAmenitiesId(amenity.id)} key={amenity.id} className={`flex border ${amenitiesId === amenity.id && "hover:bg-[#E5E5E5]"} rounded-full items-center px-1 gap-1`}>
-                 <Image src={envelop} alt="envelop icon" />
-                <Label >{amenity.label}</Label>
+              <h3 className="font-normal mb-2">Amenities</h3>
+              <div className="grid text-sm grid-cols-4 gap-4">
+                {[
+                  { id: "table", label: "Table" },
+                  { id: "wifi", label: "WiFi" },
+                  { id: "carpet", label: "Carpet/Rug" },
+                  { id: "tv", label: "TV" },
+                  { id: "ac", label: "AC/Fan" },
+                  { id: "bus", label: "Bus Station" },
+                ].map((amenity) => (
+                  <button
+                    onClick={() => {
+                      handleFilterParams(amenity.id, "amenity");
+                      setAmenitiesId(amenity.id);
+                    }}
+                    key={amenity.id}
+                    className={`flex border cursor-pointer ${
+                      amenitiesId === amenity.id && "bg-[#E5E5E5]"
+                    } rounded-full items-center px-1 gap-1`}
+                  >
+                    <Image src={envelop} alt="envelop icon" />
+                    <Label>{amenity.label}</Label>
+                  </button>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
           </TabsContent>
         </Tabs>
       </DialogContent>

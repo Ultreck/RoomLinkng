@@ -9,7 +9,7 @@ import { IoChevronBackOutline } from "react-icons/io5";
 const PaymentPage = () => {
   const router = useRouter()
   return (
-    <div className="max-w-7xl mx-auto mt-10 md:px-10 px-4 py-6 space-y-6">
+    <div className="max-w-7xl mx-auto mt-10 md:px-10 py-6 space-y-6">
       <div className="p-6 mx-auto">
         <button
            onClick={() => router.back()}

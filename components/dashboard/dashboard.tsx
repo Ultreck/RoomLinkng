@@ -1,4 +1,3 @@
-import { title } from "process";
 import { SummaryCard } from "./SummaryCard";
 import { BookingTable } from "./BookingTable";
 import { MonthlyBookingsChart } from "./MonthlyBookingsChart";

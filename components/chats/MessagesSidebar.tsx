@@ -1,5 +1,4 @@
 "use client";
-import {useEffect} from 'react'
 import { Input } from "@/components/ui/input";
 import { users } from "@/lib/helper";
 import Image from "next/image";
@@ -9,7 +8,7 @@ import { Search } from 'lucide-react';
 import useParamHook from "@/hooks/use-param-hook";
 
 export default function MessagesSidebar() {
-  const { handleSearchParams, mode} = useParamHook({modeParam: "chatId"});
+  const { handleSearchParams, mode} = useParamHook({key: "chatId"});
 
 console.log(mode);
 

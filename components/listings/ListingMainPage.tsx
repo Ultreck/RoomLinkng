@@ -1,13 +1,10 @@
 "use client";
 
 import { ibadanRooms, lagosRooms } from "@/lib/helper";
-import React, { useState } from "react";
 import RoomCard from "../RoomCard";
 import ListingHeader from "./ListingHeader";
 
 const ListingMainPage = () => {
-  const [_isSearched, setIsSearched] = useState<boolean>(false);
-
   return (
     <div>
       <div className="mb-5 w-full mt-10">
@@ -15,11 +12,12 @@ const ListingMainPage = () => {
           <h1 className="text-[#474747] text-xl font-bold">
             My Listings{" "}
             <span className="text-sm font-normal">
-             ( {[, , , , , , , , , , , , , , , , , , , , , , , , , , ,].length} results)
+              ( {[, , , , , , , , , , , , , , , , , , , , , , , , , , ,].length}{" "}
+              results)
             </span>{" "}
           </h1>
           <div className="text w-3/5">
-            <ListingHeader setIsSearched={setIsSearched} />
+            <ListingHeader />
           </div>
         </div>
         {/* Room Cards Grid */}

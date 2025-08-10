@@ -1,5 +1,4 @@
 'use client'
-import RenterHeader from "@/components/layout/RenterHeader";
 
 export default function RenterLayout({
   children,

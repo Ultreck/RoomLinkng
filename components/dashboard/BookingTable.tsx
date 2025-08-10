@@ -69,7 +69,7 @@ export function BookingTable() {
           <thead className="text-muted-foreground rounded-lg py-4">
             <tr className="bg-[#F5F5F5] rounded-lg py-3">
               <th className="py-3 px-2 rounded-tl-lg rounded-bl-lg">
-                Renter's name
+                Renter&apos;s name
               </th>
               <th className="py-3 px-2">Room booked</th>
               <th className="py-3 px-2">Amount paid</th>

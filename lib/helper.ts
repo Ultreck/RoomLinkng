@@ -17,13 +17,13 @@ type Testimonies = {
   role: string;
 };
 
-type WishListItemsProps = {
-  id: string;
-  title: string;
-  saved: string;
-  isFavorite: boolean;
-  imageUrl: string,
-};
+// type WishListItemsProps = {
+//   id: string;
+//   title: string;
+//   saved: string;
+//   isFavorite: boolean;
+//   imageUrl: string,
+// };
 
 type ChatPreviewProp = {
   me: string;

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { cn } from "@/lib/utils";
 
 const OverviewDescription = ({ text }: { text: string }) => {
     const [expanded, setExpanded] = useState(false);

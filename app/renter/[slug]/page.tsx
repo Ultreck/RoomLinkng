@@ -1,10 +1,8 @@
-// app/listings/[slug]/page.tsx
 
 import DetailsTabs from "@/components/property-details/DetailsTabs";
 import DetailsLandlordCard from "@/components/property-details/DetailsLandlordCard";
 import DetailsPriceCard from "@/components/property-details/DetailsPriceCard";
 import DetailsImageGallery from "@/components/property-details/DetailsImageGallery";
-import CalendarSection from "@/components/property-details/CalendarSection";
 import { Metadata } from "next";
 import { ibadanRooms, lagosRooms } from "@/lib/helper";
 import { MapPin } from "lucide-react";

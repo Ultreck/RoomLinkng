@@ -7,10 +7,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Copy, X } from "lucide-react";
+import { Copy} from "lucide-react";
 import {
   FaTwitter,
   FaReddit,

@@ -10,22 +10,33 @@ import {
 } from "../ui/select";
 import { cn } from "@/lib/utils";
 import { MapPin } from "lucide-react";
+import useParamHook from "@/hooks/use-param-hook";
 
 type LocationSelectProps = {
   className?: string;
-  setIsSearched: (value: boolean) => void;
+  // setIsSearched: (value: boolean) => void;
   title?: string;
 };
-const LocationSelect = ({ className, setIsSearched, title }: LocationSelectProps) => {
+const LocationSelect = ({
+  className,
+  // setIsSearched,
+  title,
+}: LocationSelectProps) => {
+  const { handleSearchParams } = useParamHook();
   return (
     <div>
       <div
         className={cn(
-          "flex items-center space-x-2  px-8  rounded-full",
+          "flex items-center space-x-2  lg:px-8 px-3  rounded-full",
           className
         )}
       >
-        <Select onValueChange={() => setIsSearched(true)}>
+        <Select
+          onValueChange={(value) => {
+            // setIsSearched(true);
+            handleSearchParams(value, "search");
+          }}
+        >
           <SelectTrigger className="border-none shadow-none text-[#474747] p-0 h-auto focus:ring-0">
             <SelectValue
               placeholder={
