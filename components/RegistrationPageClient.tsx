@@ -63,7 +63,7 @@ const RegistrationPageClient = () => {
           <div>
             {currentIndex === 0 && <AccountSelection form={form} handleNext={handleNext} />}
             {currentIndex === 1 && <SignUpForm form={form} handleNext={handleNext} />}
-            {currentIndex === 3 && <SuccessPage title="Registration completed" />}
+            {currentIndex === 3 && <SuccessPage title="Registration completed" subTitle="Good to go!" />}
           </div>
         )}
 
