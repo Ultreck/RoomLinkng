@@ -4,7 +4,7 @@ import React, { Suspense } from "react";
 
 const ListingPage = () => {
   return (
-    <div className="">
+    <div className="mx-auto">
       <Suspense fallback={null}>
         <TopNav />
         <ListingMainPage />

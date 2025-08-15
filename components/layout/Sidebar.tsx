@@ -18,7 +18,6 @@ import CompleteProfileCard from "../CompleteProfileCard";
 const Sidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
-  console.log(pathname);
 
   const menuItems = [
     { label: "Dashboard", icon: <Home size={18} />, path: "/landlord" },
@@ -46,7 +45,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="max-h-screen h-screen fixed w-72 bg-[#F6F6F6] border-r flex flex-col justify-between">
+    <div className="max-h-screen h-screen fixed lg:w-72 bg-[#F6F6F6] border-r flex flex-col justify-between">
       <div className="w-full px-5 h-full mt-5">
         <div className="flex items-center">
           <h1 className="text-2xl font-bold text-gray-900">

@@ -85,7 +85,7 @@ const ForgottenPassword = () => {
           )}
           {currentIndex === 3 && (
             <Suspense fallback={<div>Loading...</div>}>
-              <SuccessPage title={"Your password has been reset!"} />
+              <SuccessPage title={"Your password has been reset!"} subTitle="Good to go!" />
             </Suspense>
           )}
         </motion.div>

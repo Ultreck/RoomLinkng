@@ -8,9 +8,11 @@ import donoughtIcon from "../../assets/icons/donought-icon.svg";
 import Image from "next/image";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { useState } from "react";
+import useParamHook from "@/hooks/use-param-hook";
 
 export default function PaymentOption() {
 const [isCopied, setIsCopied] = useState(false);
+const {handleSearchParams} = useParamHook();
 
     const handleCopy = (text: string) => {
         setIsCopied(true);
@@ -73,7 +75,7 @@ const [isCopied, setIsCopied] = useState(false);
               </Badge>
             </div>
             <div className="text px-6">
-              <Button className="w-full cursor-pointer bg-[#3F7C5F] h-12 hover:bg-green-700">
+              <Button onClick={() => handleSearchParams("true", "paid")} className="w-full cursor-pointer bg-[#3F7C5F] h-12 hover:bg-green-700">
                 I have made payment
               </Button>
             </div>

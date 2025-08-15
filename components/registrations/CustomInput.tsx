@@ -15,7 +15,7 @@ import { FieldValues, Path, UseFormReturn } from "react-hook-form";
 
 type DynamicInputProps<T extends FieldValues> = {
   type: "text" | "email" | "password" | "number" | "textarea" | "file";
-  label: string;
+  label?: string;
   name: Path<T>;
   placeholder?: string;
   form: UseFormReturn<T>;
@@ -89,7 +89,7 @@ const CustomInput = <T extends FieldValues>({
                       {...field}
                       value={field.value ?? ""} 
                       disabled={disabled}
-                      className={`${!inputBorder && ' border-0 shadow-none '} h-[54px] ${className? className : 'h-[54px]'}`}
+                      className={`${!inputBorder && ' border-0 shadow-none '} ${className? className : 'h-[54px]'}`}
                     />
                   );
 
@@ -98,7 +98,7 @@ const CustomInput = <T extends FieldValues>({
                     <textarea
                       placeholder={placeholder}
                       {...field}
-                      className="w-full border border-input rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full border border-input rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-700"
                     />
                   );
 

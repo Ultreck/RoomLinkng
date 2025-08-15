@@ -1,8 +1,7 @@
 import React, { Suspense } from "react";
 import LocationSelect from "../modals/LocationSelect";
-import DropdownSelect from "../modals/DropdownSelect";
 import PropertyTypeSelect from "../modals/PropertyTypeSelect";
-import { endDate } from "@/lib/helper";
+// import { endDate } from "@/lib/helper";
 import Link from "next/link";
 import { FaPlus } from "react-icons/fa6";
 
@@ -18,18 +17,19 @@ const ListingHeader = () => {
           <LocationSelect className="" title="Lagos" />
 
           {/* Month Selector */}
-          <DropdownSelect
+          {/* <DropdownSelect
             data={endDate}
             label="Minimun of one month"
             placeHolder="July"
-          />
+          /> */}
 
           {/* Search Button */}
           <Link
             href={"/landlord/listing/create"}
             className="bg-[#00A859] text-white cursor-pointer flex items-center gap-2 px-5 py-1 rounded-full hover:bg-green-700"
           >
-            <FaPlus className="h-5 w-5 text-white" /> Add Listing
+            <FaPlus className="h-5 w-5 text-white" />{" "}
+            <span className="text hidden md:block">Add Listing</span>
           </Link>
         </div>
       </Suspense>

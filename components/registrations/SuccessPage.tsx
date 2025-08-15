@@ -3,19 +3,27 @@ import { Button } from "../ui/button";
 import successIcon from "../../assets/icons/success_iconsvg.svg";
 import Image from "next/image";
 import useParamHook from "@/hooks/use-param-hook";
-import Confetti from 'react-confetti';
-import { useWindowSize } from 'react-use';
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use";
 
 type successType = {
   title: string;
+  subTitle: string;
+  fallback?: string;
+  buttonText?: string;
 };
-const SuccessPage = ({ title }: successType) => {
-const {handleSearchParams} = useParamHook();
+const SuccessPage = ({
+  title,
+  subTitle,
+  fallback,
+  buttonText,
+}: successType) => {
+  const { handleSearchParams, removeQueryParams } = useParamHook();
   const { width, height } = useWindowSize();
 
   return (
     <div className="mt-20">
-       <Confetti width={width} height={height} />
+      <Confetti width={width} height={height} />
       <div className="text flex justify-center flex-col h-[70vh] items-center w-full">
         <div className="text w-1/2  mx-auto">
           <div className="text flex justify-center items-center">
@@ -27,15 +35,21 @@ const {handleSearchParams} = useParamHook();
             />
           </div>
           <div className="text-center">
-            <h1 className="text-lg font-bold">Good to go!</h1>
+            <h1 className="text-lg font-bold">{subTitle}</h1>
             <p className="text-gray-600">{title}</p>
           </div>
           <Button
-          onClick={() => handleSearchParams("login")}
+            onClick={() => {
+              if (fallback) {
+                removeQueryParams(fallback);
+              } else {
+                handleSearchParams("login");
+              }
+            }}
             className="bg-[#3F7C5F] mt-10 hover:bg-[#36624D] w-full h-14 "
             type="submit"
           >
-            Back to log in
+            {buttonText ? buttonText : "Back to log in"}
           </Button>
         </div>
       </div>
