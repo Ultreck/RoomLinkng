@@ -1,8 +1,11 @@
+import BookingMainPage from '@/components/bookings/BookingMainPage'
 import React from 'react'
 
 const BookingPage = () => {
   return (
-    <div>BookingPage</div>
+    <div>
+     <BookingMainPage/>
+    </div>
   )
 }
 

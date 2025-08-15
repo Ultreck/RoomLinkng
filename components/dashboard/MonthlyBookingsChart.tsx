@@ -16,18 +16,14 @@ const data = [
   { month: "April", bookings: 24 },
   { month: "May", bookings: 10 },
 ];
-const barColors = ["#000000", "#E48C15", "#00A859"]; // black, yellow, green
+const barColors = ["#000000", "#E48C15", "#00A859"];
 
 export function MonthlyBookingsChart() {
   return (
     <Card className="bg-white p-4 rounded-lg shadow-sm">
       <h4 className="text-sm font-medium mb-2">Monthly Bookings</h4>
       <ResponsiveContainer width="100%" height={200}>
-        <BarChart
-          data={data}
-          barCategoryGap={0} // removes gap between categories
-          barGap={0} // removes gap between bars in a group
-        >
+        <BarChart data={data} barCategoryGap={3} barGap={0}>
           <XAxis dataKey="month" />
           <YAxis />
           <Tooltip />
