@@ -3,7 +3,6 @@ import DetailsTabs from "@/components/property-details/DetailsTabs";
 import DetailsLandlordCard from "@/components/property-details/DetailsLandlordCard";
 import DetailsPriceCard from "@/components/property-details/DetailsPriceCard";
 import DetailsImageGallery from "@/components/property-details/DetailsImageGallery";
-import { Metadata } from "next";
 import { ibadanRooms, lagosRooms } from "@/lib/helper";
 import { MapPin } from "lucide-react";
 import ShareButtonWithModal from "@/components/property-details/ShareButtonWithModal";

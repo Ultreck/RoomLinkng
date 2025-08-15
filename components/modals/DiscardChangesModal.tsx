@@ -20,7 +20,8 @@ const DiscardChangesModal = () => {
         <DialogHeader>
           <DialogTitle>Discard Changes?</DialogTitle>
           <DialogDescription className="text-black">
-            Any changes you've made to this project will not be saved. <br />
+            Any changes you&apos;ve made to this project will not be saved.{" "}
+            <br />
             The action can not be undone.
           </DialogDescription>
         </DialogHeader>

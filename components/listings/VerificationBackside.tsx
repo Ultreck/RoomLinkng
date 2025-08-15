@@ -18,7 +18,7 @@ const VerificationBackside = ({ form }: BacksideProps) => {
     }));
     setFiles(mapped);
     form.setValue("backFile", acceptedFiles[0]);
-  }, []);
+  }, [form]);
 
   const formatBytes = (bytes: number, decimals = 2) => {
     if (!bytes) return "0 Bytes";

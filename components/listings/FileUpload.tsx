@@ -9,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Image from "next/image";
 
 interface PreviewFile extends File {
   preview: string;
@@ -73,7 +74,7 @@ const FileUpload = () => {
             {files.map((file, i) => (
                 <CarouselItem key={i} className="md:basis-1/2 group lg:basis-1/3">
                     <div className="group hover:scale-105  shadow-none hover:shadow-lg transition-shadow duration-300 overflow-hidden">
-                  <img
+                  <Image
                     key={i}
                     src={file.preview}
                     alt={file.name}

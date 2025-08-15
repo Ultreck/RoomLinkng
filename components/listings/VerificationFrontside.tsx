@@ -23,7 +23,7 @@ const VerificationFrontside = ({ form }: FrontSideProps) => {
     }));
     setFiles(mapped);
     form.setValue("frontFile", acceptedFiles[0])
-  }, []);
+  }, [form]);
 
   const formatBytes = (bytes: number, decimals = 2) => {
     if (!bytes) return "0 Bytes";
