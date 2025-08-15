@@ -43,7 +43,7 @@ const LocationSelect = ({
                 <span className="flex items-center gap-2">
                   {" "}
                   <MapPin className="h-4 w-4 text-green-600 hover:text-green-700 flex-shrink-0" />
-                  {title}
+                  <span className="text hidden md:block"> {title}</span>
                 </span>
               }
             />
