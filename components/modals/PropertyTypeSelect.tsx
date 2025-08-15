@@ -28,7 +28,8 @@ const PropertyTypeSelect = () => {
               <span className="flex items-center gap-2">
                 {" "}
                 <MdMeetingRoom className="h-4 w-4 text-green-600 hover:text-green-700 flex-shrink-0" />
-                Room
+                <span className="text hidden md:block">Room</span>
+                
               </span>
             }
           />

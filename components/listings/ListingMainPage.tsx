@@ -11,15 +11,15 @@ const ListingMainPage = () => {
       <Suspense fallback={null}>
         <div className="mb-5 w-full mt-10">
           <div className="text flex  justify-between items-center mb-3">
-            <h1 className="text-[#474747] text-xl font-bold">
+            <h1 className="text-[#474747] text-sm lg:text-xl grid md:flex items-center gap-1 font-semibold lg:font-bold">
               My Listings{" "}
-              <span className="text-sm font-normal">
+              <span className="text-xs lg:text-sm font-normal">
                 ({" "}
                 {[, , , , , , , , , , , , , , , , , , , , , , , , , , ,].length}{" "}
                 results)
               </span>{" "}
             </h1>
-            <div className="text w-3/5">
+            <div className="text lg:w-3/5">
               <ListingHeader />
             </div>
           </div>
