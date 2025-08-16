@@ -8,6 +8,7 @@ import {
   Settings,
   HelpCircle,
   LogOut,
+  LucideIcon,
 } from "lucide-react";
 import { BookText } from "lucide-react";
 import Image from "next/image";
@@ -15,6 +16,7 @@ import { usePathname, useRouter } from "next/navigation";
 import logo from "../../assets/images/RoomLinkNG.png";
 import CompleteProfileCard from "../CompleteProfileCard";
 
+// type subMenuItemsProps = { label: string; path: string; icon: LucideIcon };
 const Sidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
@@ -42,6 +44,20 @@ const Sidebar = () => {
       path: "/landlord/messages",
       badge: 12,
     },
+  ];
+
+  const subMenuItems = [
+    {
+      label: "Settings",
+      icon: <Settings size={18} />,
+      path: "/landlord/settings",
+    },
+    {
+      label: "Help",
+      icon: <HelpCircle size={18} />,
+      path: "/landlord/help",
+    },
+    { label: "Logout", path: "/", icon: <LogOut size={18} /> },
   ];
 
   return (
@@ -85,21 +101,10 @@ const Sidebar = () => {
           </nav>
           <div className="space-y-3 text-sm text-gray-600 mt-10 ">
             <h1 className="text-gray-400">GENERAL</h1>
-            {[
-              {
-                label: "Settings",
-                icon: <Settings size={18} />,
-                path: "/landlord/settings",
-              },
-              {
-                label: "Help",
-                icon: <HelpCircle size={18} />,
-                path: "/landlord/help",
-              },
-              { label: "Logout", icon: <LogOut size={18} /> },
-            ].map((item) => (
+            {subMenuItems.map((item) => (
               <div
                 key={item.label}
+                onClick={() => router.push(item.path)}
                 className="flex items-center cursor-pointer px-1 py-2 rounded hover:bg-gray-200"
               >
                 <div className="flex items-center gap-2">

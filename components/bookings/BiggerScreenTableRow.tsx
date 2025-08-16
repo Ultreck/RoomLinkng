@@ -31,7 +31,7 @@ const BiggerScreenTableRow = ({ data }: TableProps) => {
         key={data.id}
         className="hover:bg-gray-100 cursor-pointer transition-colors duration-150"
       >
-        <td className="py-3 lg:px-2 px-1 text-xs flex items-center space-x-2">
+        <td className="py-4 lg:px-2 px-1 text-xs md:text-base flex items-center space-x-2">
           <Image
             src={img}
             alt="data image"
@@ -41,12 +41,12 @@ const BiggerScreenTableRow = ({ data }: TableProps) => {
           />
           {data.name}
         </td>
-        <td className="py-3 lg:px-2 px-1 text-xs">{data.room}</td>
-        <td className="py-3 lg:px-2 px-1 text-xs">{data.paid}</td>
-        <td className="py-3 lg:px-2 px-1 text-xs">{data.date}</td>
-        <td className="py-3 lg:px-2 px-1 text-xs">{data.checkIn}</td>
-        <td className="py-3 lg:px-2 px-1 text-xs">{data.checkOut}</td>
-        <td className="py-3 lg:px-2 px-1 text-xs">
+        <td className="py-4 lg:px-2 px-1 text-xs md:text-base">{data.room}</td>
+        <td className="py-4 lg:px-2 px-1 text-xs md:text-base">{data.paid}</td>
+        <td className="py-4 lg:px-2 px-1 text-xs md:text-base">{data.date}</td>
+        <td className="py-4 lg:px-2 px-1 text-xs md:text-base">{data.checkIn}</td>
+        <td className="py-4 lg:px-2 px-1 text-xs md:text-base">{data.checkOut}</td>
+        <td className="py-4 lg:px-2 px-1 text-xs md:text-base">
           <span
             className={`px-2 py-1 rounded text-xs font-medium ${
               statusColors[data.status]

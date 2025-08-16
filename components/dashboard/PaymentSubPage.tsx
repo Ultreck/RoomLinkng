@@ -33,7 +33,7 @@ const PaymentSubPage = () => {
           <div className="p-6 mx-auto">
             <button
               onClick={() => router.back()}
-              className="hover:underline text-gray-600 flex items-center gap-1"
+              className="hover:underline cursor-pointer text-gray-600 flex items-center gap-1"
             >
               <IoChevronBackOutline />
               Back

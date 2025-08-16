@@ -12,7 +12,6 @@ import img from "../../assets/images/profile.png";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Card } from "../ui/card";
 
-
 type BookingStatus = "Confirmed" | "Completed" | "Cancelled";
 type TableProps = {
   data: {
@@ -28,14 +27,13 @@ type TableProps = {
   children: React.ReactNode;
 };
 const BookingProileDetails = ({ children, data }: TableProps) => {
-
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
 
       <DialogContent className="max-w-xs rounded-3xl p-0 overflow-hidden">
         <VisuallyHidden>
-          <DialogTitle>User Profile - Gladys Adediji</DialogTitle>
+          <DialogTitle></DialogTitle>
         </VisuallyHidden>
         <div className="flex flex-col items-center bg-gradient-to-b from-[#9AFFD0EB] to-[#FFFFFF] p-6">
           <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md">

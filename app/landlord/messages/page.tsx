@@ -1,9 +1,14 @@
-import React from 'react'
+import ChatMainPage from "@/components/chats/ChatMainPage";
+import TopNav from "@/components/layout/TopNav";
+import React, { Suspense } from "react";
 
 const MessagePage = () => {
   return (
-    <div>MessagePage</div>
-  )
-}
+    <Suspense fallback={null}>
+      <TopNav/>
+      <ChatMainPage />
+    </Suspense>
+  );
+};
 
-export default MessagePage
+export default MessagePage;
