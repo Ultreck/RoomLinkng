@@ -7,7 +7,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { BsShare } from 'react-icons/bs';
 import { Heart } from 'lucide-react';
 const SaveButtonModal = () => {
   return (

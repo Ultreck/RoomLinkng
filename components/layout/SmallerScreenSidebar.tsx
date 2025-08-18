@@ -8,7 +8,6 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import Sidebar from "./Sidebar";
 import { FaBars } from "react-icons/fa";
 import { usePathname, useRouter } from "next/navigation";
 import {

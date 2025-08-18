@@ -8,7 +8,6 @@ import {
   Settings,
   HelpCircle,
   LogOut,
-  LucideIcon,
 } from "lucide-react";
 import { BookText } from "lucide-react";
 import Image from "next/image";

@@ -1,5 +1,4 @@
 import DetailsImageGallery from "@/components/property-details/DetailsImageGallery";
-import DetailsLandlordCard from "@/components/property-details/DetailsLandlordCard";
 import LandlordDetails from "@/components/property-details/landlord-tab/LandlordDetailsTabs";
 import SaveButtonModal from "@/components/property-details/landlord-tab/SaveButtonModal";
 import ShareButtonWithModal from "@/components/property-details/ShareButtonWithModal";

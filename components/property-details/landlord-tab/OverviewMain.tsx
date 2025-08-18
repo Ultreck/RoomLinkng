@@ -2,7 +2,6 @@ import React from 'react'
 import OverviewDescription from '../overview-tab/OverviewDescription'
 import OverviewAmenities from '../overview-tab/OverviewAmenities'
 import OverviewPower from '../overview-tab/OverviewPower'
-import OverviewRules from '../overview-tab/OverviewRules'
 import RulesCard from './RulesCard'
 import ReviewsAndRatingCard from './ReviewsAndRatingCard'
 
