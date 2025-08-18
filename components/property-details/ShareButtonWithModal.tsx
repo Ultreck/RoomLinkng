@@ -45,7 +45,7 @@ export default function ShareButtonWithModal() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className="flex items-center bg-[#F6F6F6] hover:bg-gray-200 rounded-full w-32">
+        <Button variant="outline" className="flex cursor-pointer items-center bg-[#F6F6F6] hover:bg-gray-200 rounded-full w-32">
           <BsShare />
           Share
         </Button>

@@ -105,7 +105,11 @@ const Sidebar = () => {
               <div
                 key={item.label}
                 onClick={() => router.push(item.path)}
-                className="flex items-center cursor-pointer px-1 py-2 rounded hover:bg-gray-200"
+                className={`flex items-center cursor-pointer ${
+                  pathname === item?.path
+                    ? "bg-gray-200 border-l-4 border-green-600"
+                    : ""
+                } px-1 py-2 rounded hover:bg-gray-200`}
               >
                 <div className="flex items-center gap-2">
                   <span className="text-sm">{item.icon}</span>

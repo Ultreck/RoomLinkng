@@ -4,6 +4,7 @@ import { ibadanRooms, lagosRooms } from "@/lib/helper";
 import RoomCard from "../RoomCard";
 import ListingHeader from "./ListingHeader";
 import { Suspense } from "react";
+import Link from "next/link";
 
 const ListingMainPage = () => {
   return (
@@ -28,17 +29,19 @@ const ListingMainPage = () => {
             className={`grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4  lg:gap-6`}
           >
             {[...lagosRooms, ...ibadanRooms]?.map((room) => (
-              <RoomCard
-                type="landlord"
-                key={room.id}
-                id={room.id}
-                title={room.title}
-                location={room.location}
-                rating={room.rating}
-                price={room.price}
-                imageUrl={room.imageUrl}
-                isFavorite={room.isFavorite}
-              />
+              <Link key={room.id} href={`/landlord/listing/${room.title}`}>
+                <RoomCard
+                  type="landlord"
+                  key={room.id}
+                  id={room.id}
+                  title={room.title}
+                  location={room.location}
+                  rating={room.rating}
+                  price={room.price}
+                  imageUrl={room.imageUrl}
+                  isFavorite={room.isFavorite}
+                />
+              </Link>
             ))}
           </div>
         </div>

@@ -11,6 +11,7 @@ import Image from "next/image";
 import img from "../../assets/images/profile.png";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Card } from "../ui/card";
+import Link from "next/link";
 
 type BookingStatus = "Confirmed" | "Completed" | "Cancelled";
 type TableProps = {
@@ -66,9 +67,11 @@ const BookingProileDetails = ({ children, data }: TableProps) => {
 
         {/* Footer with button */}
         <div className="pt-0 w-4/5  lg:w-2/3 my-6 mx-auto">
-          <Button className="w-full py-6 bg-[#474747] hover:bg-[#3d3d3d] cursor-pointer text-white rounded-full">
-            Send a message
-          </Button>
+          <Link href={"/landlord/messages"}>
+            <Button className="w-full py-6 px-7 mx-auto bg-[#474747] hover:bg-[#3d3d3d] cursor-pointer text-white rounded-full">
+              Send a message
+            </Button>
+          </Link>
         </div>
       </DialogContent>
     </Dialog>
