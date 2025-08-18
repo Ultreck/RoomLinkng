@@ -14,7 +14,7 @@ const CompleteProfileCard: React.FC<CompleteProfileCardProps> = ({
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <div className="w-64 bg-green-900 text-white p-4 rounded-2xl   shadow-md">
+    <div className="w-64 bg-green-900 text-white lg:p-4 p-2 rounded-2xl   shadow-md">
       <div className="text flex items-center space-x-3">
         {/* Circle Progress */}
         <div className="transform">

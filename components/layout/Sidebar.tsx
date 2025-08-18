@@ -82,7 +82,7 @@ const Sidebar = () => {
                 key={item.label}
                 onClick={() => router.push(item.path)}
                 className={`flex items-center cursor-pointer px-1 py-2 ${
-                  pathname === item?.path
+                  pathname === item?.path || pathname.split('/').includes((item?.path).split('/')[2])
                     ? "bg-gray-200 border-l-4 border-green-600"
                     : ""
                 } rounded hover:bg-gray-200`}

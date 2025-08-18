@@ -116,21 +116,21 @@ const SettingsPage = () => {
   };
   return (
     <div className="min-h-screen mt-10 bg-white">
-      <div className="md:flex md:max-w-[70%] mx-auto sm:p-5">
+      <div className="md:flex lg:max-w-[70%] mx-auto sm:p-5">
         {/* Sidebar */}
         <div className="bg-white px-5 md:border-r md:min-h-screen">
           <div className="w-full">
             <h1 className="pl-4 text-[24px] font-semibold text-[#474747] mb-6">
               Settings
             </h1>
-            <nav className="space-y-1 sm:space-x-5 md:space-x-0 border-b md:border-b-0 flex md:grid justify-evenly">
+            <nav className="space-y-1 md:space-x-3 lg:space-x-0 border-b mb-10 md:mb-0 md:border-b-0 flex md:grid justify-evenly">
               {sidebarItems.map((item) => {
                 return (
                   <button
                     key={item.id}
                     onClick={() => setActiveTab(item.id)}
-                    className={`sm:w-48 flex cursor-pointer hover:bg-gray-50 items-center sm:space-x-3 px-3 sm:py-2 py-1 rounded-full text-left transition-all duration-200 ${
-                      activeTab === item.id ? "bg-[#F6F6F6] font-semibold" : ""
+                    className={`sm:w-48 flex cursor-pointer hover:bg-gray-50 items-center sm:space-x-3 lg:px-3 px-2 sm:py-2 py-1  text-left transition-all duration-200 ${
+                      activeTab === item.id ? "md:bg-[#F6F6F6] border-b-2 border:green-700 md:border-b-0 font-semibold" : "rounded-full"
                     }`}
                   >
                     <Image

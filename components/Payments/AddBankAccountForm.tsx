@@ -53,7 +53,7 @@ export default function AddBankAccountForm() {
   };
 
   return (
-    <div className="max-w-lg mx-auto bg-white rounded-lg px-6 ">
+    <div className="max-w-lg mx-auto bg-white rounded-lg md:px-6 ">
       <button
         onClick={() => router.back()}
         className="hover:underline cursor-pointer text-gray-700 mb-2 flex items-center gap-1"

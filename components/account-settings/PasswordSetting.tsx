@@ -42,7 +42,7 @@ const PasswordSetting = () => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="sm:w-2/3 w-full space-y-8"
+            className="w-full space-y-8"
           >
             <CustomInput<ResetPasswordForm>
               type={"password"}
